@@ -4,6 +4,12 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 
 export default function LoginPage(props) {
+  const [error, serError] = useState("");
+  const [state, setState] = useState({
+    email: "",
+    password: ""
+  });
+  
   return (
     <>
       <h1>Setup Login Page</h1>

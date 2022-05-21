@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema(
     password: String,
     photoUrl: String, // string from aws!
     bio: String,
+    location: String,
   },
   {
     timestamps: true,
