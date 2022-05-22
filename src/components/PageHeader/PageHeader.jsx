@@ -1,31 +1,53 @@
 import React from "react";
-import { Header, Segment, Image, Icon } from "semantic-ui-react";
+import { Dropdown, Icon, Menu, Container, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-export default function PageHeader({user, handleLogout}) {
+export default function PageHeader({ user, handleLogout }) {
+  console.log(user);
+  const style = {
+    padding: "10px",
+    backgroundColor: "#d61e27",
+    color: "white",
+    fontFamily: "Balsamiq Sans",
+  };
 
-    return (
-    <Segment clearing>
-      <Header as="h2" floated="right">
-        <Link to="/">
-          <Icon name="home"></Icon>
-        </Link>
-        <Link to="" onClick={handleLogout}>
-          Logout
-        </Link>
-      </Header>
-      <Header as="h2" floated="left">
-        <Link to={`/${user?.username}`}>
-          <Image
-            src={
-              user?.photoUrl
-                ? user?.photoUrl
-                : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-            }
-            avatar
-          ></Image>
-        </Link>
-      </Header>
-    </Segment>
+  return (
+    <div>
+      <Menu fixed="top" inverted borderless style={style}>
+        <Container>
+          <Menu.Item as="a" header>
+            <Icon size="big" name="food" style={{ marginRight: "0.3em" }} />
+            <Link to="/home">Up To You</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/login">Randomizer</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Image
+              src={
+                user?.photoUrl
+                  ? user?.photoUrl
+                  : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+              }
+              avatar
+            ></Image>
+          </Menu.Item>
+          <Dropdown item simple text={user.username} floating="right">
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <Link to={`/${user?.username}`} style={{ color: "black" }}>
+                  Profile Page
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/" style={{ color: "black" }} onClick={handleLogout}>
+                  Logout
+                </Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Container>
+      </Menu>
+    </div>
   );
 }
