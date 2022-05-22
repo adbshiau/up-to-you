@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import "./SignupPage.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
-import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage({handleSignUpOrLogin}) {
   const [error, setError] = useState("");
@@ -58,7 +58,7 @@ export default function SignUpPage({handleSignUpOrLogin}) {
           <Image src="https://imgur.com/YOVgkpF.png" />Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
-          <Segment stacked>
+          <Segment>
             <Form.Input
               name="username"
               placeholder="username"
