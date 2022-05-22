@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 export default function PageHeader({ user, handleLogout }) {
   console.log(user);
   const style = {
-    padding: "10px",
-    backgroundColor: "#d61e27",
+    backgroundColor: "#82ace6",
     color: "white",
     fontFamily: "Balsamiq Sans",
   };
@@ -16,11 +15,11 @@ export default function PageHeader({ user, handleLogout }) {
       <Menu fixed="top" inverted borderless style={style}>
         <Container>
           <Menu.Item as="a" header>
-            <Icon size="big" name="food" style={{ marginRight: "0.3em" }} />
+          <Image size="mini" style={{ marginRight: "1em" }} src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png" />
             <Link to="/home">Up To You</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="/login">Randomizer</Link>
+            <Link to="/random">Randomizer</Link>
           </Menu.Item>
           <Menu.Item>
             <Image

@@ -37,8 +37,8 @@ export default function LoginPage({handleSignUpOrLogin}) {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 400 }}>
-      <Header as="h2" color="red" textAlign="center" style={{ fontFamily: 'Balsamiq Sans' }}>
-        <Image src="https://imgur.com/YOVgkpF.png" />Log in to your account.
+      <Header as="h2" textAlign="center" style={{ fontFamily: 'Balsamiq Sans', color: '#82ace6' }}>
+        <Image src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png" />Log in to your account.
       </Header>
       <Form autoComplete="off" onSubmit={handleSubmit}>
       <Segment>
@@ -59,12 +59,12 @@ export default function LoginPage({handleSignUpOrLogin}) {
             required
           />
           
-          <Button type="submit" className="btn" color="red">
+          <Button type="submit" className="btn" style={{ backgroundColor: '#ffe196', color: 'black'}}>
             Log In
           </Button>
           </Segment>
           <Segment>
-            New to us? <Link style={{ color: 'red'}} to="/signup">Sign Up.</Link>
+            New to us? <Link style={{ color: '#82ace6', fontWeight: 'bold' }} to="/signup">Sign Up.</Link>
           </Segment>
         {error ? <ErrorMessage error={error} /> : null}
       </Form>
