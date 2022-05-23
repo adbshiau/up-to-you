@@ -3,7 +3,9 @@ import { Grid } from 'semantic-ui-react'
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SearchField from '../../components/SearchField/SearchField';
 
-export default function HomePage({user, handleLogout}) {
+
+export default function HomePage({user, handleLogout, handleSearch}) {
+
     return (
         <>
       <Grid>
@@ -20,7 +22,7 @@ export default function HomePage({user, handleLogout}) {
       </Grid>
 
       
-      <SearchField />
+      <SearchField handleSearch={handleSearch}/>
     </>
     )
 }

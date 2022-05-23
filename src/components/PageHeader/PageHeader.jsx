@@ -3,7 +3,7 @@ import { Dropdown, Icon, Menu, Container, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default function PageHeader({ user, handleLogout }) {
-  console.log(user);
+//   console.log(user);
   const style = {
     backgroundColor: "#82ace6",
     color: "white",
@@ -19,7 +19,7 @@ export default function PageHeader({ user, handleLogout }) {
             <Link to="/home">Up To You</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="/random">Randomizer</Link>
+            <Link to="/random">Random</Link>
           </Menu.Item>
           <Menu.Item>
             <Image

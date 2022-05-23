@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 
-export default function (props) {
+
+export default function ({handleSearch}) {
   const [state, setState] = useState({
     term: "",
     location: "",
@@ -14,14 +15,17 @@ export default function (props) {
     })
   }
   
-  function handleSubmit() {
-      console.log("handleSubmit function")
+  function handleSubmit(e) {
+      e.preventDefault();
+      console.log(state, " <-- SearchField handleSubmit function");
+      handleSearch(state);
+      
   }
 
   return (
     <Grid textAlign="center" style={{ height: "15vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 700 }}>
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form autoComplete="off" onSubmit={handleSubmit} >
           <Form.Group widths="equal">
             <Form.Input
               id="form-subcomponent-shorthand-input-term"

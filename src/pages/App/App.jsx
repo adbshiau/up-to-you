@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
@@ -6,6 +6,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import HomePage from "../HomePage/HomePage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import userService from "../../utils/userService";
+import yelpService from "../../utils/yelpService";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -21,10 +22,22 @@ function App() {
     setUser(null);
   }
 
+  function handleSearch(data) {
+    yelpService.search(data);
+  }
+
   if (user) {
     return (
       <Routes>
-        <Route path="/home" element={<HomePage user={user} handleLogout={handleLogout} />} 
+        <Route
+          path="/home"
+          element={
+            <HomePage
+              user={user}
+              handleLogout={handleLogout}
+              handleSearch={handleSearch}
+            />
+          }
         />
         <Route
           path="/login"
@@ -35,8 +48,8 @@ function App() {
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
         <Route
-        path="/:username"
-        element={<ProfilePage user={user} handleLogout={handleLogout}/>}
+          path="/:username"
+          element={<ProfilePage user={user} handleLogout={handleLogout} />}
         />
       </Routes>
     );

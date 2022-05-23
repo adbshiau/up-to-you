@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import { useNavigate, Link } from "react-router-dom";
+import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 import "./SignupPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 
-export default function SignUpPage({handleSignUpOrLogin}) {
+export default function SignUpPage({ handleSignUpOrLogin }) {
   const [error, setError] = useState("");
   const [state, setState] = useState({
     username: "",
@@ -13,7 +13,7 @@ export default function SignUpPage({handleSignUpOrLogin}) {
     password: "",
     confirmPassword: "",
     bio: "",
-    location: ""
+    location: "",
   });
   const [selectedFile, setSelectedFile] = useState("");
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ export default function SignUpPage({handleSignUpOrLogin}) {
   function handleChange(e) {
     setState({
       ...state,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
 
   function handleFileInput(e) {
@@ -35,7 +35,7 @@ export default function SignUpPage({handleSignUpOrLogin}) {
 
     const formData = new FormData();
 
-    formData.append('photo', selectedFile);
+    formData.append("photo", selectedFile);
 
     for (let fieldName in state) {
       formData.append(fieldName, state[fieldName]);
@@ -44,18 +44,23 @@ export default function SignUpPage({handleSignUpOrLogin}) {
     try {
       await userService.signup(formData);
       handleSignUpOrLogin();
-      navigate('/home');
-    } catch(err) {
-        console.log(err, 'error from signup handleSubmit function');
-        setError(err.message);
+      navigate("/home");
+    } catch (err) {
+      console.log(err, "error from signup handleSubmit function");
+      setError(err.message);
     }
   }
 
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 400 }}>
-        <Header as="h2" textAlign="center" style={{ fontFamily: 'Balsamiq Sans', color: '#82ace6' }}>
-          <Image src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png" />Sign Up
+        <Header
+          as="h2"
+          textAlign="center"
+          style={{ fontFamily: "Balsamiq Sans", color: "#82ace6" }}
+        >
+          <Image src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png" />
+          Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment>
@@ -111,12 +116,19 @@ export default function SignUpPage({handleSignUpOrLogin}) {
                 onChange={handleFileInput}
               />
             </Form.Field>
-            <Button type="submit" className="btn" style={{ backgroundColor: '#ffe196', color: 'black'}}>
+            <Button
+              type="submit"
+              className="btn"
+              style={{ backgroundColor: "#ffe196", color: "black" }}
+            >
               Sign Up
             </Button>
           </Segment>
-          {error ? <ErrorMessage error={error} /> : null}
         </Form>
+        <Segment>
+            Already have an account? <Link style={{ color: '#82ace6', fontWeight: 'bold' }} to="/login">Log in.</Link>
+          </Segment>
+        {error ? <ErrorMessage error={error} /> : null}
       </Grid.Column>
     </Grid>
   );
