@@ -17,9 +17,8 @@ export default function ({handleSearch}) {
   
   function handleSubmit(e) {
       e.preventDefault();
-      console.log(state, " <-- SearchField handleSubmit function");
-      handleSearch(state);
       
+      handleSearch(state);
   }
 
   return (

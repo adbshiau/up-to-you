@@ -1,8 +1,9 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
+import SearchField from "../../components/SearchField/SearchField";
 
-export default function ProfilePage({ user, handleLogout }) {
+export default function RandomPage({ user, handleLogout, handleSearch }) {
   return (
     <>
       <Grid>
@@ -13,10 +14,11 @@ export default function ProfilePage({ user, handleLogout }) {
         </Grid.Row>
         <Grid.Row>
             <Grid.Column>
-            <h1>Profile Page</h1>
+            <h1>Random Page</h1>
             </Grid.Column>
         </Grid.Row>
       </Grid>
+      <SearchField handleSearch={handleSearch}/>
     </>
   );
 }

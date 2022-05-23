@@ -5,6 +5,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import HomePage from "../HomePage/HomePage";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import RandomPage from "../RandomPage/RandomPage";
 import userService from "../../utils/userService";
 import yelpService from "../../utils/yelpService";
 
@@ -50,6 +51,16 @@ function App() {
         <Route
           path="/:username"
           element={<ProfilePage user={user} handleLogout={handleLogout} />}
+        />
+        <Route
+          path="/random"
+          element={
+            <RandomPage
+              user={user}
+              handleLogout={handleLogout}
+              handleSearch={handleSearch}
+            />
+          }
         />
       </Routes>
     );
