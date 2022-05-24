@@ -14,9 +14,11 @@ export default function ProfilePage({ user, handleLogout }) {
         <Grid.Row>
             <Grid.Column>
             <Header as='h1' style={{paddingTop: '50px'}}>
-              <Image circular src={user.photoUrl}/>
+              <Image circular src={user.photoUrl} />
               {user.username}
             </Header>
+            {user.location}
+            {user.bio}
             </Grid.Column>
         </Grid.Row>
       </Grid>

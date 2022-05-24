@@ -6,6 +6,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import HomePage from "../HomePage/HomePage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import RandomPage from "../RandomPage/RandomPage";
+import BusinessPage from "../BusinessPage/BusinessPage";
 import userService from "../../utils/userService";
 import yelpService from "../../utils/yelpService";
 
@@ -15,6 +16,7 @@ function App() {
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
   const [searchResults, setSearchResults] = useState([]);
+  const [business, setBusiness] = useState({})
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -23,6 +25,10 @@ function App() {
   function handleLogout() {
     userService.logout();
     setUser(null);
+  }
+
+  function handleClick(data) {
+    setBusiness(data);
   }
 
   async function handleSearch(data) {
@@ -41,6 +47,7 @@ function App() {
               handleLogout={handleLogout}
               handleSearch={handleSearch}
               results={searchResults}
+              handleClick={handleClick}
             />
           }
         />
@@ -63,8 +70,15 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               handleSearch={handleSearch}
-            />
-          }
+            />}
+        />
+        <Route
+          path="/businesses/:id"
+          element={
+          <BusinessPage 
+          user={user} 
+          handleLogout={handleLogout} 
+          business={business}/>}
         />
       </Routes>
     );

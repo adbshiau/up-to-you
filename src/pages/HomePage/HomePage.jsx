@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Grid } from 'semantic-ui-react'
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SearchField from '../../components/SearchField/SearchField';
 import SearchResults from '../../components/SearchResults/SearchResults';
 
 
-export default function HomePage({user, handleLogout, handleSearch, results}) {
+export default function HomePage({user, handleLogout, handleSearch, results, handleClick}) {
+
 
     return (
         <>
@@ -23,8 +24,9 @@ export default function HomePage({user, handleLogout, handleSearch, results}) {
       </Grid>
 
       
-      <SearchField handleSearch={handleSearch}/>
-      <SearchResults results={results}/>
+      <SearchField handleSearch={handleSearch} />
+      
+      <SearchResults results={results} handleClick={handleClick}/>
     </>
     )
 }

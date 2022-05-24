@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const yelpCtrl = require("../../controllers/yelp");
+const businessesCtrl = require("../../controllers/businesses");
 
 /*---------- Public Routes ----------*/
-router.get("/search/:location/:term", yelpCtrl.search);
+router.post("/", businessesCtrl.create);
 
 
 /*---------- Protected Routes ----------*/

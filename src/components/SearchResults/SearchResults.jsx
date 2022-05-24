@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchItem from '../SearchItem/SearchItem';
 import { Card, Grid } from 'semantic-ui-react'
 
-export default function SearchResults({results}) {
+export default function SearchResults({results, handleClick}) {
+    
+
     return (
         <Grid textAlign="center" style={{ height: "15vh" }} verticalAlign="middle">
         
@@ -10,7 +13,7 @@ export default function SearchResults({results}) {
             <Card>
             {results.map((item) => {
                 return (
-                    <SearchItem result={item}/>
+                    <SearchItem result={item} handleClick={handleClick}/>
                 )
             })}
             </Card>

@@ -26,13 +26,13 @@ const businessSchema = new mongoose.Schema({
   businessName: String,
   yelpUrl: String,
   imageUrl: String,
-  categories: [String],
-  rating: Number,
-  price: String,
-  location: String,
-  phone: Number,
-  open_now: Boolean,
-//   userFavorited: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  // categories: [String],
+  // rating: Number,
+  // price: String,
+  // location: String,
+  // phone: Number,
+  // open_now: Boolean,
+  userFavorited: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   favorites: [favoritesSchema], // embedded the favorites schema
   reviews: [reviewsSchema], // embedded the reviews schema
 });
