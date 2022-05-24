@@ -41,4 +41,8 @@ export function removeBusiness(businessId) {
         throw new Error('Check express terminal!')
     })
 }
+
+export function show(businessId) {
+    console.log('show function')
+}
   

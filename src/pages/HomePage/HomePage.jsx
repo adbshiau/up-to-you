@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { Grid, Header, Image } from "semantic-ui-react";
 import "./HomePage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import * as businessAPI from '../../utils/businessApi';
 
 
-export default function HomePage({ user, handleLogout }) {
+export default function HomePage({ user, handleLogout, handleClick }) {
     
     const [businesses, setBusinesses] = useState([]);
 
@@ -52,9 +53,10 @@ export default function HomePage({ user, handleLogout }) {
       {businesses.map((item) => {
                 return (
                     <>
-                    <h1>{item.businessName}</h1>
-                    <img id='test' src={item.imageUrl}/>
+                    <h1>{item.name}</h1>
+                    <img id='test' src={item.image_url}/>
                     <button onClick={() => removeBusiness(item._id)}>Delete</button>
+                    <Link to={`/businesses/${item._id}`}><button onClick={() => handleClick(item)}>View Business</button></Link>
                     </>
                 )
             })}

@@ -23,15 +23,15 @@ const favoritesSchema = mongoose.Schema({
 // A business has many reviews. A review belongs to a business.
 const businessSchema = new mongoose.Schema({
   yelpId: String,
-  businessName: String,
-  yelpUrl: String,
-  imageUrl: String,
+  name: String,
+  url: String,
+  image_url: String,
   // categories: [String],
   // rating: Number,
   // price: String,
   // location: String,
   // phone: Number,
-  // open_now: Boolean,
+  // is_closed: Boolean,
   userFavorited: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   favorites: [favoritesSchema], // embedded the favorites schema
   reviews: [reviewsSchema], // embedded the reviews schema

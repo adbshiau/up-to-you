@@ -47,6 +47,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               results={searchResults}
+              handleClick={handleClick}
             />
           }
         />

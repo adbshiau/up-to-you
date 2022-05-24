@@ -15,9 +15,9 @@ async function create(req, res) {
   try {
     const business = await Business.create({
       yelpId: req.body.yelpId,
-      businessName: req.body.businessName,
-      yelpUrl: req.body.yelpUrl,
-      imageUrl: req.body.imageUrl,
+      name: req.body.name,
+      url: req.body.url,
+      image_url: req.body.image_url,
       userFavorited: req.user,
     });
     console.log(business, "create function in business controller");
