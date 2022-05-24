@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 
-
-export default function ({handleSearch}) {
+export default function ({ handleSearch }) {
   const [state, setState] = useState({
     term: "",
     location: "",
   });
 
-  function handleChange(e){
+  const [searchArray, setSearchArray] = useState([])
+
+  function handleChange(e) {
     setState({
       ...state,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
-  
+
   function handleSubmit(e) {
-      e.preventDefault();
-      
-      handleSearch(state);
+    e.preventDefault();
+    handleSearch(state);
   }
 
   return (
     <Grid textAlign="center" style={{ height: "15vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 700 }}>
-        <Form autoComplete="off" onSubmit={handleSubmit} >
+        <Form autoComplete="off" onSubmit={handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
               id="form-subcomponent-shorthand-input-term"
@@ -44,7 +44,11 @@ export default function ({handleSearch}) {
             <Button
               type="submit"
               className="btn"
-              style={{ paddingRight: 10, paddingLeft: 17, backgroundColor: '#ffe196' }}
+              style={{
+                paddingRight: 10,
+                paddingLeft: 17,
+                backgroundColor: "#ffe196",
+              }}
             >
               <i class="search icon"></i>
             </Button>

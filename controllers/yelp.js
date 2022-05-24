@@ -12,7 +12,7 @@ function search(req, res) {
   // console.log(req.params.term, 'term')
   const options = {
     method: "GET",
-    url: `${rootURL}location=${req.params.location}&term=${req.params.term}&limit=3`,
+    url: `${rootURL}location=${req.params.location}&term=${req.params.term}&limit=10`,
     headers: {
       Authorization: "Bearer " + key,
     },

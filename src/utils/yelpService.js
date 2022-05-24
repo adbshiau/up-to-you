@@ -6,9 +6,9 @@ async function search(input) {
   // .then(response => response.text())
   // .then(data => console.log(data))
   let response = await fetch(`${BASE_URL}/search/${input.location}/${input.term}`);
-  let data = await response.text();
+  let data = await response.json();
 
-  // console.log(data);
+  console.log(data);
   return data;
 }
 

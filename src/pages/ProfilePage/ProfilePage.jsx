@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Header, Image } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 
 export default function ProfilePage({ user, handleLogout }) {
@@ -13,7 +13,10 @@ export default function ProfilePage({ user, handleLogout }) {
         </Grid.Row>
         <Grid.Row>
             <Grid.Column>
-            <h1>Profile Page</h1>
+            <Header as='h1' style={{paddingTop: '50px'}}>
+              <Image circular src={user.photoUrl}/>
+              {user.username}
+            </Header>
             </Grid.Column>
         </Grid.Row>
       </Grid>

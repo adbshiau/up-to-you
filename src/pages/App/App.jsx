@@ -14,6 +14,8 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
+  const [searchResults, setSearchResults] = useState([]);
+
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
   }
@@ -23,8 +25,9 @@ function App() {
     setUser(null);
   }
 
-  function handleSearch(data) {
-    yelpService.search(data);
+  async function handleSearch(data) {
+    const results = await yelpService.search(data);
+    setSearchResults(results.businesses);
   }
 
   if (user) {
@@ -37,6 +40,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               handleSearch={handleSearch}
+              results={searchResults}
             />
           }
         />
