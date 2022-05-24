@@ -6,6 +6,7 @@ const s3 = new S3();
 
 module.exports = {
     create,
+    index,
 };
 
 async function create(req, res) {
@@ -25,5 +26,14 @@ async function create(req, res) {
         console.log(err, 'err from business controller')
         res.json({data: err})
     }
-    
+}
+
+async function index(req,res) {
+    console.log('index controller')
+    try {
+        const businesses = await Business.find({}).populate('userFavorited').exec()
+        res.status(200).json({businesses})
+    } catch (err) {
+        console.log(err, 'err from index function')
+    }
 }
