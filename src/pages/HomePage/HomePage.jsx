@@ -8,13 +8,24 @@ import * as businessAPI from '../../utils/businessApi';
 export default function HomePage({ user, handleLogout }) {
     
     const [businesses, setBusinesses] = useState([]);
+
     async function getBusinesses() {
         try {
             const data = await businessAPI.getAll();
             console.log(data, 'data in homepage')
             setBusinesses([...data.businesses])
         } catch(err) {
-            console.log(err)
+            console.log(err, 'getBusinesses error')
+        }
+    }
+
+    async function removeBusiness(businessId) {
+        try {
+            const data = await businessAPI.removeBusiness(businessId);
+            console.log(data, 'response from the server when removing a business');
+            getBusinesses();
+        } catch(err) {
+            console.log(err, 'err from removeBusiness function')
         }
     }
 
@@ -43,6 +54,7 @@ export default function HomePage({ user, handleLogout }) {
                     <>
                     <h1>{item.businessName}</h1>
                     <img id='test' src={item.imageUrl}/>
+                    <button onClick={() => removeBusiness(item._id)}>Delete</button>
                     </>
                 )
             })}

@@ -29,4 +29,16 @@ export function getAll() {
         throw new Error('getAll function in business controller')
     })
 }
+
+export function removeBusiness(businessId) {
+    return fetch(`${BASE_URL}/${businessId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => {
+        if(res.ok) return res.json()
+        throw new Error('Check express terminal!')
+    })
+}
   

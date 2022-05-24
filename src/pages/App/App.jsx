@@ -41,9 +41,9 @@ function App() {
     return (
       <Routes>
         <Route
-          path="/search"
+          path="/home"
           element={
-            <SearchPage
+            <HomePage
               user={user}
               handleLogout={handleLogout}
               results={searchResults}
@@ -51,9 +51,9 @@ function App() {
           }
         />
         <Route
-          path="/home"
+          path="/search"
           element={
-            <HomePage
+            <SearchPage
               user={user}
               handleLogout={handleLogout}
               handleSearch={handleSearch}

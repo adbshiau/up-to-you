@@ -5,7 +5,7 @@ import SearchField from '../../components/SearchField/SearchField';
 import SearchResults from '../../components/SearchResults/SearchResults';
 
 
-export default function HomePage({user, handleLogout, handleSearch, results, handleClick}) {
+export default function SearchPage({user, handleLogout, handleSearch, results, handleClick}) {
    
 
     return (

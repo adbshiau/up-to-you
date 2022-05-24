@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import * as businessAPI from '../../utils/businessApi';
@@ -6,6 +7,7 @@ import * as businessAPI from '../../utils/businessApi';
 export default function BusinessPage({ user, handleLogout, business }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   async function handleAddBusiness() {
       const item = {
@@ -17,6 +19,7 @@ export default function BusinessPage({ user, handleLogout, business }) {
     try {
         setLoading(true);
         const data = await businessAPI.create(item);
+        navigate('/home')
     } catch (err) {
         console.log(err);
         setError(err.message);
