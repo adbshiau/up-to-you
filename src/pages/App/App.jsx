@@ -3,10 +3,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
-import HomePage from "../HomePage/HomePage";
+import SearchPage from "../SearchPage/SearchPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import RandomPage from "../RandomPage/RandomPage";
 import BusinessPage from "../BusinessPage/BusinessPage";
+import HomePage from "../HomePage/HomePage";
 import userService from "../../utils/userService";
 import yelpService from "../../utils/yelpService";
 
@@ -39,6 +40,16 @@ function App() {
   if (user) {
     return (
       <Routes>
+        <Route
+          path="/search"
+          element={
+            <SearchPage
+              user={user}
+              handleLogout={handleLogout}
+              results={searchResults}
+            />
+          }
+        />
         <Route
           path="/home"
           element={

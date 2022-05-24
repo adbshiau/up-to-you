@@ -22,6 +22,9 @@ export default function PageHeader({ user, handleLogout }) {
             <Link to="/random">Random</Link>
           </Menu.Item>
           <Menu.Item>
+            <Link to="/search">Search</Link>
+          </Menu.Item>
+          <Menu.Item>
             <Image
               src={
                 user?.photoUrl

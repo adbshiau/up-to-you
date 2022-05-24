@@ -19,6 +19,7 @@ export default function RandomPage({ user, handleLogout, handleSearch }) {
             </Grid.Column>
         </Grid.Row>
       </Grid>
+      <h1>Random Page</h1>
       <SearchField handleSearch={handleSearch}/>
       
     </>

@@ -16,10 +16,10 @@ async function create(req, res) {
            businessName: req.body.businessName,
            yelpUrl: req.body.yelpUrl,
            imageUrl: req.body.imageUrl,
-           user: req.user 
+           userFavorited: req.user 
         })
         console.log(business, 'create function in business controller')
-        await business.populate('user');
+        await business.populate('userFavorited');
         res.status(201).json({business: business})
     } catch (err) {
         console.log(err, 'err from business controller')

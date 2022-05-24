@@ -22,6 +22,7 @@ export default function ProfilePage({ user, handleLogout }) {
             </Grid.Column>
         </Grid.Row>
       </Grid>
+      <h1>Profile Page</h1>
     </>
   );
 }

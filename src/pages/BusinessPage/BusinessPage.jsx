@@ -17,7 +17,6 @@ export default function BusinessPage({ user, handleLogout, business }) {
     try {
         setLoading(true);
         const data = await businessAPI.create(item);
-        console.log(data, 'response from the server in handleAddBusiness')
     } catch (err) {
         console.log(err);
         setError(err.message);
@@ -36,7 +35,8 @@ export default function BusinessPage({ user, handleLogout, business }) {
         </Grid.Row>
       </Grid>
       <h1>Business Page</h1>
-      <h1 onClick={handleAddBusiness}>{business.name}</h1>
+      <h1>{business.name}</h1>
+      <button onClick={handleAddBusiness}>Favorite</button>
       <h2>Rating: {business.rating} stars</h2>
       <h2>Price: {business.price}</h2>
       <img src={business.image_url} />
