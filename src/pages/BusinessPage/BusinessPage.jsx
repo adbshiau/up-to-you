@@ -4,6 +4,7 @@ import { Form, Grid } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import AddReviewForm from "../../components/AddReviewForm/AddReviewForm";
 import * as businessAPI from "../../utils/businessApi";
+import * as reviewAPI from "../../utils/reviewApi";
 
 export default function BusinessPage({ user, handleLogout, business }) {
   const [loading, setLoading] = useState(true);
@@ -48,6 +49,14 @@ export default function BusinessPage({ user, handleLogout, business }) {
     window.location.assign(business.url);
   }
 
+  async function handleAddReview(review) {
+    setLoading(true);
+    console.log(review, 'handleAddReview')
+    console.log(business._id, 'business id')
+    const data = await reviewAPI.create(review, business._id)
+    
+  }
+
   useEffect(() => {
     getBusiness();
   }, []);
@@ -69,7 +78,7 @@ export default function BusinessPage({ user, handleLogout, business }) {
       <button onClick={handleAddBusiness}>Favorite</button>
       <button onClick={handleClick}>Yelp Link</button>
       <img src={business.image_url} />
-      <AddReviewForm user={user}/>
+      <AddReviewForm user={user} handleAddReview={handleAddReview}/>
     </>
   );
 }

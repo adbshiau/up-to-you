@@ -25,6 +25,7 @@ app.use(require("./config/auth"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/yelp", require("./routes/api/yelp"));
 app.use("/api/businesses", require("./routes/api/businesses"));
+app.use("/api", require("./routes/api/reviews"));
 
 // "catch all" route
 app.get("/*", function (req, res) {

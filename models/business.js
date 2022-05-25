@@ -6,6 +6,7 @@ const reviewsSchema = mongoose.Schema(
     businessName: String,
     userId: { type: mongoose.Schema.Types.ObjectId },
     businessId: { type: mongoose.Schema.Types.ObjectId },
+    photoUrl: String,
     text: String,
     stars: Number,
   },
