@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const reviewsSchema = mongoose.Schema(
   {
     username: String,
-    businessName: String,
     userId: { type: mongoose.Schema.Types.ObjectId },
-    businessId: { type: mongoose.Schema.Types.ObjectId },
+    business: { type: mongoose.Schema.Types.ObjectId},
     photoUrl: String,
     text: String,
     stars: Number,
