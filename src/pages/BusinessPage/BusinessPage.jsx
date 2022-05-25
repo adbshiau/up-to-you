@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Grid } from "semantic-ui-react";
+import { Form, Grid } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
+import AddReviewForm from "../../components/AddReviewForm/AddReviewForm";
 import * as businessAPI from "../../utils/businessApi";
 
 export default function BusinessPage({ user, handleLogout, business }) {
@@ -68,6 +69,7 @@ export default function BusinessPage({ user, handleLogout, business }) {
       <button onClick={handleAddBusiness}>Favorite</button>
       <button onClick={handleClick}>Yelp Link</button>
       <img src={business.image_url} />
+      <AddReviewForm user={user}/>
     </>
   );
 }
