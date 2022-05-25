@@ -10,8 +10,8 @@ export default function BusinessPage({ user, handleLogout, business }) {
   const navigate = useNavigate();
 
   async function handleAddBusiness() {
-      const categories = [] 
-      business.categories.forEach(element => categories.push(element.title));
+    const categories = [];
+    business.categories.forEach((element) => categories.push(element.title));
     const item = {
       yelpId: business.id,
       name: business.name,
@@ -22,7 +22,7 @@ export default function BusinessPage({ user, handleLogout, business }) {
       price: business.price,
       location: business.location.display_address,
       phone: business.phone,
-      is_closed: business.is_closed
+      is_closed: business.is_closed,
     };
     try {
       setLoading(true);
@@ -38,7 +38,6 @@ export default function BusinessPage({ user, handleLogout, business }) {
     try {
       const data = await businessAPI.show();
       console.log(data, "data in homepage");
-      
     } catch (err) {
       console.log(err, "getBusiness error");
     }
@@ -49,8 +48,8 @@ export default function BusinessPage({ user, handleLogout, business }) {
   }
 
   useEffect(() => {
-      getBusiness();
-  }, [])
+    getBusiness();
+  }, []);
 
   return (
     <>

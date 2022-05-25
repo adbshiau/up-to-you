@@ -4,6 +4,7 @@ const yelpCtrl = require("../../controllers/yelp");
 
 /*---------- Public Routes ----------*/
 router.get("/search/:location/:term", yelpCtrl.search);
+router.get("/random/:location/:term", yelpCtrl.randomSearch);
 
 
 /*---------- Protected Routes ----------*/

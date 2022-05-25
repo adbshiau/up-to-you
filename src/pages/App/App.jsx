@@ -37,6 +37,12 @@ function App() {
     setSearchResults(results.businesses);
   }
 
+  async function handleRandomSearch(data) {
+    const result = await yelpService.randomSearch(data);
+    console.log(result, 'handleRandomSearch')
+    setBusiness(result);
+  }
+
   if (user) {
     return (
       <Routes>
@@ -81,7 +87,8 @@ function App() {
             <RandomPage
               user={user}
               handleLogout={handleLogout}
-              handleSearch={handleSearch}
+              handleRandomSearch={handleRandomSearch}
+              business={business}
             />}
         />
         <Route
