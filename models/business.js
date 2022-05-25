@@ -26,12 +26,12 @@ const businessSchema = new mongoose.Schema({
   name: String,
   url: String,
   image_url: String,
-  // categories: [String],
-  // rating: Number,
-  // price: String,
-  // location: String,
-  // phone: Number,
-  // is_closed: Boolean,
+  categories: [String],
+  rating: Number,
+  price: String,
+  location: [String],
+  phone: Number,
+  is_closed: Boolean,
   userFavorited: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   favorites: [favoritesSchema], // embedded the favorites schema
   reviews: [reviewsSchema], // embedded the reviews schema

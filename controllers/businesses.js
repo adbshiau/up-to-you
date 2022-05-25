@@ -18,6 +18,12 @@ async function create(req, res) {
       name: req.body.name,
       url: req.body.url,
       image_url: req.body.image_url,
+      categories: req.body.categories,
+      rating: req.body.rating,
+      price: req.body.price,
+      location: req.body.location,
+      phone: req.body.phone,
+      is_closed: req.body.is_closed,
       userFavorited: req.user,
     });
     console.log(business, "create function in business controller");

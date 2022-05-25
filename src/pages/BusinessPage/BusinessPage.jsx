@@ -10,11 +10,19 @@ export default function BusinessPage({ user, handleLogout, business }) {
   const navigate = useNavigate();
 
   async function handleAddBusiness() {
+      const categories = [] 
+      business.categories.forEach(element => categories.push(element.title));
     const item = {
       yelpId: business.id,
       name: business.name,
       url: business.url,
       image_url: business.image_url,
+      categories: categories,
+      rating: business.rating,
+      price: business.price,
+      location: business.location.display_address,
+      phone: business.phone,
+      is_closed: business.is_closed
     };
     try {
       setLoading(true);
