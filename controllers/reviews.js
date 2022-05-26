@@ -54,7 +54,7 @@ async function deleteReview(req, res) {
 async function index(req, res) {
     console.log(req.user._id, 'index function')
     try {
-        const reviews = await Business.reviews.find({'userId': req.user._id}).exec()
+        const reviews = await (await Business.find().where(req.user._id)).in(reviews).exec();
         res.status(200).json(reviews);
     } catch (err) {
         console.log(err, "err from index function");

@@ -27,9 +27,8 @@ export function deleteReview(reviewId) {
     })
 }
 
-export function index(userId) {
-    console.log(userId)
-    return fetch(`${BASE_URL}/reviews/${userId}`, {
+export function index() {
+    return fetch(`${BASE_URL}/reviews`, {
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
