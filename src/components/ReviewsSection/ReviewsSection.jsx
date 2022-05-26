@@ -4,13 +4,12 @@ import "./ReviewsSection.css";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import * as reviewAPI from "../../utils/reviewApi";
 
-export default function ReviewsSection({reviews }) {
-  const [allReviews, setAllReviews] = useState(reviews);
+export default function ReviewsSection({reviews, setReviews }) {
 
   async function deleteReview(reviewId) {
     try {
       const data = await reviewAPI.deleteReview(reviewId);
-      console.log(data, "response from the server when removeing a review");
+      await setReviews(data.reviews)
     } catch (err) {
       console.log(err, "err from the deleteReview function");
     }
@@ -18,7 +17,7 @@ export default function ReviewsSection({reviews }) {
 
   useEffect(() => {}, [reviews]);
 
-  if (reviews.length) {
+  if (reviews?.length) {
     return (
       <>
         <h1>There's reviews!</h1>

@@ -7,14 +7,8 @@ import AddReviewForm from "../../components/AddReviewForm/AddReviewForm";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
 import * as reviewAPI from "../../utils/reviewApi";
 
-export default function BusinessPage({
-  user,
-  handleLogout,
-  business,
-  showProfile,
-}) 
-
-{
+export default function BusinessPage({ user, handleLogout, business, showProfile }) {
+  
   const [reviews, setReviews] = useState(business.reviews);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -56,7 +50,7 @@ export default function BusinessPage({
       </Grid.Row>
       <Grid.Row>
           <Grid.Column>
-                <ReviewsSection reviews={reviews} />
+                <ReviewsSection reviews={reviews} setReviews={setReviews}/>
           </Grid.Column>
       </Grid.Row>
     </Grid>
