@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Grid, Header, Image } from "semantic-ui-react";
+import { Grid, Header, Image, Container, Card } from "semantic-ui-react";
 import "./HomePage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
@@ -39,28 +39,28 @@ export default function HomePage({ user, handleLogout, showProfile }) {
 
   return (
     <>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
-            <PageHeader user={user} handleLogout={handleLogout} />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column></Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Container>
+        <PageHeader user={user} handleLogout={handleLogout} />
+      </Container>
 
-      <h1>Home Page</h1>
-      {businesses.map((item, key) => {
-        return (
-          <SearchItem
-            onClick={() => {}}
-            result={item}
-            removeBusiness={removeBusiness}
-            showProfile={showProfile}
-          />
-        );
-      })}
+      <Container id="home" style={{ marginTop: "7em" }}>
+        <Grid>
+          <Grid.Row>
+              <Card>
+                {businesses.map((item, key) => {
+                  return (
+                    <SearchItem
+                      onClick={() => {}}
+                      result={item}
+                      removeBusiness={removeBusiness}
+                      showProfile={showProfile}
+                    />
+                  );
+                })}
+              </Card>
+          </Grid.Row>
+        </Grid>
+      </Container>
     </>
   );
 }
