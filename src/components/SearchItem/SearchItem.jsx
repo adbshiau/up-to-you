@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Button, Icon, Item } from "semantic-ui-react";
+import './SearchItem.css';
 import * as businessAPI from "../../utils/businessApi";
 
-export default function SearchItem({ result, removeBusiness, showProfile }) {
+export default function SearchItem({
+  result,
+  removeBusiness,
+  showProfile,
+  onHome,
+}) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -24,7 +30,7 @@ export default function SearchItem({ result, removeBusiness, showProfile }) {
     };
     try {
       const data = await businessAPI.create(item);
-      showProfile(data._id)
+      showProfile(data._id);
     } catch (err) {
       console.log(err);
       setError(err.message);
@@ -32,23 +38,23 @@ export default function SearchItem({ result, removeBusiness, showProfile }) {
   }
 
   return (
-    <>
-      <Image src={result.image_url} wrapped ui={true} size="medium" />
-      <Card.Content>
-        <Card.Header content={result.name} />
-        <Card.Meta>{result.price}</Card.Meta>
-        <Card.Description>{result.location.display_address}</Card.Description>
-        <Button icon onClick={handleAddBusiness}>
-          <Icon name="heart" />
+    <Item className="search-item">
+      <Item.Image src={result.image_url} wrapped ui={true} size="medium" onClick={() => showProfile(result._id)}/>
+      <Item.Content>
+        <Item.Header as="h3" style={{ marginBottom: 0, marginTop: '5px' }}>{result.name}</Item.Header>
+        <Item.Description>{result.rating} <Icon color='yellow' name='star'/> {result.price}</Item.Description>
+        <Item.Description style={{ paddingTop: "5px", paddingBottom: "5px" }}>{result.location[1]}</Item.Description>
+        {onHome ? (
+          ""
+        ) : (
+          <Button icon onClick={handleAddBusiness} size='mini'>
+            <Icon name="heart" />
+          </Button>
+        )}
+        <Button icon onClick={() => removeBusiness(result._id)} size='mini' style={{ backgroundColor: "#ffe196", color: "black" }}>
+          Delete
         </Button>
-        <Button icon onClick={() => removeBusiness(result._id)}>
-          <Icon name="trash alternate outline" />
-        </Button>
-        <Button onClick={() => 
-            showProfile(result._id)}>
-        <Icon name="zoom"/>
-        </Button>
-      </Card.Content>
-    </>
+      </Item.Content>
+    </Item>
   );
 }

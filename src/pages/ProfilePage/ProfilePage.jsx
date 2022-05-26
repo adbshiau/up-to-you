@@ -6,7 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import * as businessAPI from "../../utils/businessApi";
 import * as reviewAPI from "../../utils/reviewApi";
 
-export default function ProfilePage({ user, handleLogout, showProfile }) {
+export default function ProfilePage({ user, handleLogout, showProfile, onHome }) {
   const [businesses, setBusinesses] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -60,23 +60,28 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
         </Grid>
 
         <Header><Icon name='heart outline' />Favorites</Header>
-        <Segment>
-          {businesses?.map((item, key) => {
-            return (
-              <SearchItem
-                result={item}
-                removeBusiness={removeBusiness}
-                showProfile={showProfile}
-              />
-            );
-          })}
-        </Segment>
+        <Grid container columns={3} doubling stackable>
+        <Grid.Column>
+            {businesses?.map((item, key) => {
+              return (
+                <Segment>
+                <SearchItem
+                  result={item}
+                  removeBusiness={removeBusiness}
+                  showProfile={showProfile}
+                  onHome={onHome}
+                />
+                </Segment>
+              );
+            })}
+        </Grid.Column>
+      </Grid>
 
-        <Header><Icon name='comment outline' />Reviews</Header>
-        <Segment>
-          
-        </Segment>
+        <Header><Icon name='comment outline'/>Reviews</Header>
+        
       </Container>
     </div>
   );
 }
+
+

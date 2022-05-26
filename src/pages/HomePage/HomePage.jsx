@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Grid, Header, Image, Container, Card } from "semantic-ui-react";
+import { Grid, Container, Segment } from "semantic-ui-react";
 import "./HomePage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import * as businessAPI from "../../utils/businessApi";
 
-export default function HomePage({ user, handleLogout, showProfile }) {
+export default function HomePage({ user, handleLogout, showProfile, onHome }) {
   const [businesses, setBusinesses] = useState([]);
   const [business, setBusiness] = useState();
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ export default function HomePage({ user, handleLogout, showProfile }) {
       setLoading(true);
       const data = await businessAPI.removeBusiness(businessId);
       setLoading(false);
-      getBusinesses();
+      await getBusinesses();
     } catch (err) {
       console.log(err, "removeBusiness error");
     }
@@ -43,24 +43,23 @@ export default function HomePage({ user, handleLogout, showProfile }) {
         <PageHeader user={user} handleLogout={handleLogout} />
       </Container>
 
-      <Container id="home" style={{ marginTop: "7em" }}>
-        <Grid>
-          <Grid.Row>
-              <Card>
-                {businesses.map((item, key) => {
-                  return (
-                    <SearchItem
-                      onClick={() => {}}
-                      result={item}
-                      removeBusiness={removeBusiness}
-                      showProfile={showProfile}
-                    />
-                  );
-                })}
-              </Card>
-          </Grid.Row>
-        </Grid>
-      </Container>
+      <Grid container columns={3} doubling stackable id="home" style={{ marginTop: "7em" }}>
+        <Grid.Column>
+            {businesses.map((item, key) => {
+              return (
+                <Segment>
+                <SearchItem
+                  onClick={() => {}}
+                  result={item}
+                  removeBusiness={removeBusiness}
+                  showProfile={showProfile}
+                  onHome={onHome}
+                />
+                </Segment>
+              );
+            })}
+        </Grid.Column>
+      </Grid>
     </>
   );
 }

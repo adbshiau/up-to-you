@@ -45,6 +45,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
+              onHome={true}
             />
           }
         />
@@ -55,6 +56,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
+              onHome={false}
             />
           }
         />
@@ -73,6 +75,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
+              onHome={true}
             />
           }
         />
@@ -83,6 +86,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
+              onHome={false}
             />
           }
         />
