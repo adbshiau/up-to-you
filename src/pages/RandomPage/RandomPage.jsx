@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { Grid, Container, Header } from "semantic-ui-react";
+import './RandomPage.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchField from "../../components/SearchField/SearchField";
 import SearchItem from "../../components/SearchItem/SearchItem";
@@ -38,7 +39,7 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
             <Grid style={{ marginTop: "7em" }}>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
-                        <Header as='h1'>Can't pick a place? Let the app decide!</Header>
+                        <Header as='h1' id='random-page'>Can't pick a place? Let the app decide!</Header>
                         <SearchField handleSearch={handleRandomSearch}/>
                     </Grid.Column>
                 </Grid.Row>
@@ -60,7 +61,7 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
         <Grid style={{ marginTop: "7em" }}>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
-                        <Header as='h1'>Can't pick a place? Let the app decide!</Header>
+                        <Header as='h1' id='random-page'>Can't pick a place? Let the app decide!</Header>
                         <SearchField handleSearch={handleRandomSearch}/>
                     </Grid.Column>
                 </Grid.Row>

@@ -40,7 +40,7 @@ export default function SearchPage({
       <Grid style={{ marginTop: "7em" }}>
         <Grid.Row>
           <Grid.Column textAlign="center">
-          <Header as='h1'>Search for local businesses.</Header>
+          <Header as='h1' id='random-page'>Search for local businesses.</Header>
             <SearchField handleSearch={handleSearch} />
           </Grid.Column>
         </Grid.Row>

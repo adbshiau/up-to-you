@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Header, Image, Container, Segment, Icon } from "semantic-ui-react";
+import './ProfilePage.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from "../../components/Loader/Loader";
@@ -41,14 +42,14 @@ export default function ProfilePage({ user, handleLogout, showProfile, onHome })
       <Container>
         <PageHeader user={user} handleLogout={handleLogout} />
       </Container>
-      <Container text style={{ marginTop: "7em" }}>
+      <Container text style={{ marginTop: "7em" }} id='profile-page'>
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>
               <Image src={user.photoUrl} wrapped={false} />
             </Grid.Column>
             <Grid.Column width={11} style={{ paddingLeft: 0 }}>
-              <Header as="h1" style={{ paddingTop: "120px", marginBottom: 0 }}>
+              <Header id='profile-page' as="h1" style={{ paddingTop: "120px", marginBottom: 0 }}>
                 {user.username}
               </Header>
               <Header as="h5" style={{ marginTop: 0, color: "gray" }}>
@@ -59,7 +60,7 @@ export default function ProfilePage({ user, handleLogout, showProfile, onHome })
           </Grid.Row>
         </Grid>
 
-        <Header><Icon name='heart outline' />Favorites</Header>
+        <Header id='profile-page'><Icon name='heart outline' />Favorites</Header>
         <Grid container columns={3} doubling stackable>
         <Grid.Column>
             {businesses?.map((item, key) => {
@@ -77,7 +78,7 @@ export default function ProfilePage({ user, handleLogout, showProfile, onHome })
         </Grid.Column>
       </Grid>
 
-        <Header><Icon name='comment outline'/>Reviews</Header>
+        <Header id='profile-page'><Icon name='comment outline'/>Reviews</Header>
         
       </Container>
     </div>

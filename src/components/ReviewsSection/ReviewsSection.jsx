@@ -20,7 +20,7 @@ export default function ReviewsSection({ reviews, setReviews, user }) {
     return (
       <>
         <Comment.Group>
-            <Header as='h3'>Reviews:</Header>
+            <Header as='h3' id="business-page">Reviews:</Header>
           <Comment>
             {reviews.map((review, key) => (
               <ReviewItem review={review} deleteReview={deleteReview} user={user}/>

@@ -41,7 +41,7 @@ export default function SearchItem({
     <Item className="search-item">
       <Item.Image src={result.image_url} wrapped ui={true} size="medium" onClick={() => showProfile(result._id)}/>
       <Item.Content>
-        <Item.Header as="h3" style={{ marginBottom: 0, marginTop: '5px' }}>{result.name}</Item.Header>
+        <Item.Header className="search-item" as="h3" style={{ marginBottom: 0, marginTop: '5px' }}>{result.name}</Item.Header>
         <Item.Description>{result.rating} <Icon color='yellow' name='star'/> {result.price}</Item.Description>
         <Item.Description style={{ paddingTop: "5px", paddingBottom: "5px" }}>{result.location.display_address}</Item.Description>
         {onHome ? (

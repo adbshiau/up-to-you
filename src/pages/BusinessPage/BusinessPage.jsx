@@ -39,14 +39,14 @@ export default function BusinessPage({
         <PageHeader user={user} handleLogout={handleLogout} />
       </Container>
 
-      <Container id="profile" style={{ marginTop: "7em" }}>
+      <Container id="business-page" style={{ marginTop: "7em" }}>
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
               <Image src={business.image_url} size="large" wrapped={false}/>
             </Grid.Column>
             <Grid.Column width={7}>
-              <Header as='h1'>{business.name}</Header>
+              <Header id="business-page" as='h1'>{business.name}</Header>
               <p>{business.rating} <Icon color='yellow' name='star'/> {business.price}</p>
               {business.categories.map((item) => <Label size='mini'>{item}</Label>)}
               <p style={{ paddingTop: '10px'}}>{business.location.join(', ')}</p>
@@ -56,7 +56,7 @@ export default function BusinessPage({
 
           <Grid.Row style={{ justifyContent: 'center'}}>
               <Grid.Column width={8}>
-                <h3>Leave a review!</h3>
+                <h3 id="business-page">Leave a review!</h3>
                 <AddReviewForm user={user} handleAddReview={handleAddReview} />
               </Grid.Column>
               <Grid.Column width={7}>
