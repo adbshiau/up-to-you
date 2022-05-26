@@ -17,7 +17,7 @@ function App() {
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
   const [business, setBusiness] = useState();
-  
+
   const navigate = useNavigate();
 
   function handleSignUpOrLogin() {
@@ -30,9 +30,9 @@ function App() {
   }
 
   async function showProfile(businessId) {
-    const data = await businessAPI.show(businessId)
+    const data = await businessAPI.show(businessId);
     setBusiness(data);
-    navigate(`/businesses/${businessId}`)
+    navigate(`/businesses/${businessId}`);
   }
 
   if (user) {
@@ -45,7 +45,6 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
-              
             />
           }
         />
@@ -69,7 +68,13 @@ function App() {
         />
         <Route
           path="/:username"
-          element={<ProfilePage user={user} handleLogout={handleLogout} />}
+          element={
+            <ProfilePage
+              user={user}
+              handleLogout={handleLogout}
+              showProfile={showProfile}
+            />
+          }
         />
         <Route
           path="/random"
@@ -78,17 +83,19 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
-            />}
+            />
+          }
         />
         <Route
           path="/businesses/:id"
           element={
-          <BusinessPage 
-          user={user} 
-          handleLogout={handleLogout}
-          business={business}
-          showProfile={showProfile}
-          />}
+            <BusinessPage
+              user={user}
+              handleLogout={handleLogout}
+              business={business}
+              showProfile={showProfile}
+            />
+          }
         />
       </Routes>
     );

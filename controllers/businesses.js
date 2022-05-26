@@ -73,7 +73,7 @@ async function show(req, res) {
 async function index(req, res) {
     try {
         const businesses = await Business.find({'userFavorited': req.user._id});
-        res.status(200).json({ businesses });
+        res.status(200).json(businesses);
     } catch (err) {
         console.log(err, "err from index function")
     }
