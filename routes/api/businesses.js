@@ -6,6 +6,7 @@ const businessesCtrl = require("../../controllers/businesses");
 router.post("/", businessesCtrl.create);
 router.get("/", businessesCtrl.index);
 router.delete("/:id", businessesCtrl.delete);
+router.get("/:id", businessesCtrl.show);
 
 
 /*---------- Protected Routes ----------*/

@@ -8,6 +8,7 @@ module.exports = {
   create,
   index,
   delete: deleteBusiness,
+  show,
 };
 
 async function create(req, res) {
@@ -56,4 +57,14 @@ async function deleteBusiness(req, res) {
   } catch (err) {
     console.log(err, "err from delete function");
   }
+}
+
+async function show(req, res) {
+    // console.log(req.params.id, 'show controller')
+    try {
+        const business = await Business.findOne({'_id': req.params.id});
+        res.status(200).json({business})
+    } catch (err) {
+        console.log(err, "err from show function");
+    }
 }

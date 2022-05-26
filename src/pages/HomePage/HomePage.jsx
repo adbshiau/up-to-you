@@ -1,38 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Grid, Header, Image } from "semantic-ui-react";
 import "./HomePage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import * as businessAPI from '../../utils/businessApi';
+import SearchItem from "../../components/SearchItem/SearchItem";
+import * as businessAPI from "../../utils/businessApi";
 
+export default function HomePage({ user, handleLogout, showProfile }) {
+  const [businesses, setBusinesses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-export default function HomePage({ user, handleLogout, handleClick }) {
-    
-    const [businesses, setBusinesses] = useState([]);
-
-    async function getBusinesses() {
-        try {
-            const data = await businessAPI.getAll();
-            console.log(data, 'data in homepage')
-            setBusinesses([...data.businesses])
-        } catch(err) {
-            console.log(err, 'getBusinesses error')
-        }
+  async function getBusinesses() {
+    try {
+      setLoading(true);
+      const data = await businessAPI.getAll();
+      setLoading(false);
+      setBusinesses([...data.businesses]);
+    } catch (err) {
+      console.log(err, "getBusinesses error");
     }
+  }
 
-    async function removeBusiness(businessId) {
-        try {
-            const data = await businessAPI.removeBusiness(businessId);
-            console.log(data, 'response from the server when removing a business');
-            getBusinesses();
-        } catch(err) {
-            console.log(err, 'err from removeBusiness function')
-        }
+  async function removeBusiness(businessId) {
+    try {
+      setLoading(true);
+      const data = await businessAPI.removeBusiness(businessId);
+      setLoading(false);
+      getBusinesses();
+    } catch (err) {
+      console.log(err, "removeBusiness error");
     }
+  }
 
-    useEffect(() => {
-        getBusinesses();
-      }, []);
+  useEffect(() => {
+    getBusinesses();
+  }, []);
 
   return (
     <>
@@ -43,23 +45,20 @@ export default function HomePage({ user, handleLogout, handleClick }) {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-            <Grid.Column>
-            
-            </Grid.Column>
+          <Grid.Column></Grid.Column>
         </Grid.Row>
       </Grid>
-      
+
       <h1>Home Page</h1>
       {businesses.map((item) => {
-                return (
-                    <>
-                    <h1>{item.name}</h1>
-                    <img id='test' src={item.image_url}/>
-                    <button onClick={() => removeBusiness(item._id)}>Delete</button>
-                    <Link to={`/businesses/${item._id}`}><button onClick={() => handleClick(item)}>View Business</button></Link>
-                    </>
-                )
-            })}
+        return (
+          <SearchItem
+            result={item}
+            removeBusiness={removeBusiness}
+            showProfile={showProfile}
+          />
+        );
+      })}
     </>
   );
 }

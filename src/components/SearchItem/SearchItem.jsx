@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 import * as businessAPI from "../../utils/businessApi";
 
-export default function SearchItem({ result, handleClick }) {
+export default function SearchItem({ result, removeBusiness, showProfile }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -30,15 +30,26 @@ export default function SearchItem({ result, handleClick }) {
     }
   }
   
+  function handleShowProfile() {
+    showProfile(result._id);
+    navigate(`/businesses/${result._id}`)
+  }
+
   return (
     <>
-      <Image src={result.image_url} wrapped ui={false} size="small" />
+      <Image src={result.image_url} wrapped ui={true} size="medium" />
       <Card.Content>
         <Card.Header content={result.name} />
         <Card.Meta>{result.price}</Card.Meta>
         <Card.Description>{result.location.display_address}</Card.Description>
         <Button icon onClick={handleAddBusiness}>
           <Icon name="heart" />
+        </Button>
+        <Button icon onClick={() => removeBusiness(result._id)}>
+          <Icon name="trash alternate outline" />
+        </Button>
+        <Button onClick={handleShowProfile}>
+        <Icon name="zoom"/>
         </Button>
       </Card.Content>
     </>

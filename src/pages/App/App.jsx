@@ -9,13 +9,12 @@ import RandomPage from "../RandomPage/RandomPage";
 import BusinessPage from "../BusinessPage/BusinessPage";
 import HomePage from "../HomePage/HomePage";
 import userService from "../../utils/userService";
+import * as businessAPI from "../../utils/businessApi";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
-
-  const [business, setBusiness] = useState({})
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -26,8 +25,8 @@ function App() {
     setUser(null);
   }
 
-  function handleClick(data) {
-    setBusiness(data);
+  async function showProfile(businessId) {
+    const data = await businessAPI.show(businessId)
   }
 
   // async function handleSearch(data) {
@@ -50,7 +49,7 @@ function App() {
             <HomePage
               user={user}
               handleLogout={handleLogout}
-              handleClick={handleClick}
+              showProfile={showProfile}
             />
           }
         />
@@ -60,7 +59,6 @@ function App() {
             <SearchPage
               user={user}
               handleLogout={handleLogout}
-              handleClick={handleClick}
             />
           }
         />
@@ -90,8 +88,7 @@ function App() {
           <BusinessPage 
           user={user} 
           handleLogout={handleLogout} 
-          business={business}
-          handleClick={handleClick} />}
+          />}
         />
       </Routes>
     );

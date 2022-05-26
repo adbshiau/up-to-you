@@ -8,7 +8,7 @@ import * as businessAPI from "../../utils/businessApi";
 import * as reviewAPI from "../../utils/reviewApi";
 
 export default function BusinessPage({ user, handleLogout, business }) {
-    
+    const [state, setState] = useState(business);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const navigate = useNavigate();

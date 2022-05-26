@@ -3,18 +3,31 @@ import { Link } from 'react-router-dom';
 import { Grid, Image, Card } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchField from "../../components/SearchField/SearchField";
-import SearchResults from "../../components/SearchResults/SearchResults";
+import SearchItem from "../../components/SearchItem/SearchItem";
+import Loader from '../../components/Loader/Loader';
 import yelpService from "../../utils/yelpService";
 
 export default function RandomPage({ user, handleLogout }) {
-    
-    const [result, setResult] = useState()
+
+    const [result, setResult] = useState();
+    const [loading, setLoading] = useState(false);
     
     async function handleRandomSearch(data) {
+        setLoading(true);
         const result = await yelpService.randomSearch(data);
-        console.log(result, 'handleRandomSearch')
+        setLoading(false);
         setResult(result);
     }
+
+    if (loading) {
+        return (
+          <>
+            <PageHeader handleLogout={handleLogout} user={user} />
+            <Loader />
+          </>
+        );
+    }
+
     if (result) {
         return (
             <>
@@ -32,14 +45,7 @@ export default function RandomPage({ user, handleLogout }) {
               </Grid>
               <h1>Random Page</h1>
               <SearchField handleSearch={handleRandomSearch}/>
-                <Image src={result.image_url} wrapped ui={false} size='tiny' />
-                <Card.Content>
-                
-                    <Card.Header content={result.name}/>
-                    <Card.Meta>{result.price}</Card.Meta>
-                    <Card.Description>{result.location.display_address}</Card.Description>
-                
-                </Card.Content>
+                <SearchItem result={result}/>
             </>
         )
     }     

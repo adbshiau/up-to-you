@@ -43,7 +43,14 @@ export function removeBusiness(businessId) {
 }
 
 export function show(businessId) {
-    console.log('show function')
-    
+    return fetch(`${BASE_URL}/${businessId}`, {
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Check businessAPI.')
+    })
+
 }
   
