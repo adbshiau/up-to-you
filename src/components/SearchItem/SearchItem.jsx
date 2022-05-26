@@ -43,7 +43,7 @@ export default function SearchItem({
       <Item.Content>
         <Item.Header as="h3" style={{ marginBottom: 0, marginTop: '5px' }}>{result.name}</Item.Header>
         <Item.Description>{result.rating} <Icon color='yellow' name='star'/> {result.price}</Item.Description>
-        <Item.Description style={{ paddingTop: "5px", paddingBottom: "5px" }}>{result.location.display_address[1]}</Item.Description>
+        <Item.Description style={{ paddingTop: "5px", paddingBottom: "5px" }}>{result.location.display_address}</Item.Description>
         {onHome ? (
           ""
         ) : (
