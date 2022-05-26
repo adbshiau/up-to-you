@@ -6,6 +6,7 @@ const upload = multer(); // <- handles multipart/formdata requests(photos)
 
 /*---------- Public Routes ----------*/
 router.post("/businesses/:id/reviews", upload.single('photo'), reviewsCtrl.create);
+router.delete("/comments/:id", reviewsCtrl.delete);
 
 
 

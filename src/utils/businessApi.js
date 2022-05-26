@@ -44,5 +44,6 @@ export function removeBusiness(businessId) {
 
 export function show(businessId) {
     console.log('show function')
+    
 }
   

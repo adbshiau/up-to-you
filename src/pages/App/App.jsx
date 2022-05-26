@@ -97,7 +97,8 @@ function App() {
           <BusinessPage 
           user={user} 
           handleLogout={handleLogout} 
-          business={business}/>}
+          business={business}
+          handleClick={handleClick} />}
         />
       </Routes>
     );

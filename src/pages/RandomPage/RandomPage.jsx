@@ -22,14 +22,14 @@ export default function RandomPage({ user, handleLogout, handleRandomSearch, bus
       </Grid>
       <h1>Random Page</h1>
       <SearchField handleSearch={handleRandomSearch}/>
-        <Image src={business?.image_url} wrapped ui={false} size='tiny' />
+        {/* <Image src={business.image_url} wrapped ui={false} size='tiny' />
         <Card.Content>
         
-            <Card.Header content={business?.name}/>
-            <Card.Meta>{business?.price}</Card.Meta>
-            <Card.Description>{business?.location.display_address}</Card.Description>
+            <Card.Header content={business.name}/>
+            <Card.Meta>{business.price}</Card.Meta>
+            <Card.Description>{business.location.display_address}</Card.Description>
         
-        </Card.Content>
+        </Card.Content> */}
     </>
   );
 }

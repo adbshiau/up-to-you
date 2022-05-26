@@ -7,6 +7,7 @@ const s3 = new S3();
 
 module.exports = {
     create,
+    delete: deleteReview,
     
 };
 
@@ -34,7 +35,17 @@ async function create(req, res) {
         console.log(err)
         res.json({review: err})
     }
-    
+}
 
-    
+async function deleteReview(req, res) {
+    console.log(req.user.username, 'delete review function!')
+    try {
+        const business = await Business.findOne({'reviews._id': req.params.id, 'reviews.userId': req.user._id})
+        business.reviews.remove(req.params.id)
+        console.log(business, 'business in delete review function')
+        await business.save()
+        res.json({business: business})
+    } catch (err) {
+        res.status(400).json({err})
+    }
 }

@@ -3,12 +3,19 @@ import { Grid } from 'semantic-ui-react'
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SearchField from '../../components/SearchField/SearchField';
 import SearchResults from '../../components/SearchResults/SearchResults';
+import yelpService from '../../utils/yelpService';
 
 
-export default function SearchPage({user, handleLogout, handleSearch, results, handleClick}) {
-   
+export default function SearchPage({user, handleLogout, handleClick}) {
 
-    return (
+  const [searchResults, setSearchResults] = useState([]);
+
+  async function handleSearch(data) {
+    const results = await yelpService.search(data);
+    setSearchResults(results.businesses);
+  }
+
+  return (
         <>
       <Grid>
         <Grid.Row>
@@ -27,7 +34,7 @@ export default function SearchPage({user, handleLogout, handleSearch, results, h
       
       <SearchField handleSearch={handleSearch} />
       
-      <SearchResults results={results} handleClick={handleClick}/>
+      <SearchResults results={searchResults} handleClick={handleClick}/>
     </>
-    )
+  )
 }

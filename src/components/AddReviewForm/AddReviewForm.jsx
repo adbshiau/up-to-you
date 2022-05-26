@@ -26,7 +26,7 @@ export default function AddReviewForm({handleAddReview}) {
     formData.append('photo', selectedFile)
     formData.append('text', review.text)
     formData.append('stars', review.stars)
-    console.log(formData, 'handleSubmit')
+
     handleAddReview(formData);
   }
 
