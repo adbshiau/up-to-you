@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchItem from '../SearchItem/SearchItem';
-import { Card, Grid } from 'semantic-ui-react'
+import { Card, Grid, Button, Icon } from 'semantic-ui-react'
 
 export default function SearchResults({results, handleClick}) {
     
@@ -13,7 +13,10 @@ export default function SearchResults({results, handleClick}) {
             <Card>
             {results.map((item) => {
                 return (
+                    <>
                     <SearchItem result={item} handleClick={handleClick}/>
+                    
+                    </>
                 )
             })}
             </Card>

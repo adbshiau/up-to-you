@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Grid } from 'semantic-ui-react'
 import PageHeader from '../../components/PageHeader/PageHeader';
+import Loader from '../../components/Loader/Loader';
 import SearchField from '../../components/SearchField/SearchField';
 import SearchResults from '../../components/SearchResults/SearchResults';
 import yelpService from '../../utils/yelpService';
@@ -9,10 +10,22 @@ import yelpService from '../../utils/yelpService';
 export default function SearchPage({user, handleLogout, handleClick}) {
 
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function handleSearch(data) {
+    setLoading(true);
     const results = await yelpService.search(data);
+    setLoading(false);
     setSearchResults(results.businesses);
+  }
+
+  if (loading) {
+    return (
+      <>
+        <PageHeader handleLogout={handleLogout} user={user} />
+        <Loader />
+      </>
+    );
   }
 
   return (

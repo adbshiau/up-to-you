@@ -7,8 +7,6 @@ export default function ({ handleSearch }) {
     location: "",
   });
 
-  const [searchArray, setSearchArray] = useState([])
-
   function handleChange(e) {
     setState({
       ...state,

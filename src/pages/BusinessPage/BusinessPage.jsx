@@ -8,36 +8,36 @@ import * as businessAPI from "../../utils/businessApi";
 import * as reviewAPI from "../../utils/reviewApi";
 
 export default function BusinessPage({ user, handleLogout, business }) {
-  
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+    
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-  async function handleAddBusiness() {
-    const categories = [];
-    business.categories.forEach((element) => categories.push(element.title));
-    const item = {
-      yelpId: business.id,
-      name: business.name,
-      url: business.url,
-      image_url: business.image_url,
-      categories: categories,
-      rating: business.rating,
-      price: business.price,
-      location: business.location.display_address,
-      phone: business.phone,
-      is_closed: business.is_closed,
-    };
-    try {
-      setLoading(true);
-      const data = await businessAPI.create(item);
-      //   navigate("/home");
+//   async function handleAddBusiness() {
+//     const categories = [];
+//     business.categories.forEach((element) => categories.push(element.title));
+//     const item = {
+//       yelpId: business.id,
+//       name: business.name,
+//       url: business.url,
+//       image_url: business.image_url,
+//       categories: categories,
+//       rating: business.rating,
+//       price: business.price,
+//       location: business.location.display_address,
+//       phone: business.phone,
+//       is_closed: business.is_closed,
+//     };
+//     try {
+//       setLoading(true);
+//       const data = await businessAPI.create(item);
+//       //   navigate("/home");
       
-    } catch (err) {
-      console.log(err);
-      setError(err.message);
-    }
-  }
+//     } catch (err) {
+//       console.log(err);
+//       setError(err.message);
+//     }
+//   }
 
   async function getBusiness() {
     try {
@@ -78,7 +78,7 @@ export default function BusinessPage({ user, handleLogout, business }) {
       </Grid>
       <h1>Business Page</h1>
       <h1>{business.name}</h1>
-      <button onClick={handleAddBusiness}>Favorite</button>
+      <button >Favorite</button>
       <button onClick={handleLinkClick}>Yelp Link</button>
       <img src={business.image_url} />
       <AddReviewForm user={user} handleAddReview={handleAddReview} />

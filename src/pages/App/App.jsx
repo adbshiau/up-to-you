@@ -9,14 +9,12 @@ import RandomPage from "../RandomPage/RandomPage";
 import BusinessPage from "../BusinessPage/BusinessPage";
 import HomePage from "../HomePage/HomePage";
 import userService from "../../utils/userService";
-import yelpService from "../../utils/yelpService";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
-  const [searchResults, setSearchResults] = useState([]);
   const [business, setBusiness] = useState({})
 
   function handleSignUpOrLogin() {
@@ -32,16 +30,16 @@ function App() {
     setBusiness(data);
   }
 
-  async function handleSearch(data) {
-    const results = await yelpService.search(data);
-    setSearchResults(results.businesses);
-  }
+  // async function handleSearch(data) {
+  //   const results = await yelpService.search(data);
+  //   setSearchResults(results.businesses);
+  // }
 
-  async function handleRandomSearch(data) {
-    const result = await yelpService.randomSearch(data);
-    console.log(result, 'handleRandomSearch')
-    setBusiness(result);
-  }
+  // async function handleRandomSearch(data) {
+  //   const result = await yelpService.randomSearch(data);
+  //   console.log(result, 'handleRandomSearch')
+  //   setBusiness(result);
+  // }
 
   if (user) {
     return (
@@ -52,7 +50,6 @@ function App() {
             <HomePage
               user={user}
               handleLogout={handleLogout}
-              results={searchResults}
               handleClick={handleClick}
             />
           }
@@ -63,8 +60,6 @@ function App() {
             <SearchPage
               user={user}
               handleLogout={handleLogout}
-              handleSearch={handleSearch}
-              results={searchResults}
               handleClick={handleClick}
             />
           }
@@ -87,8 +82,6 @@ function App() {
             <RandomPage
               user={user}
               handleLogout={handleLogout}
-              handleRandomSearch={handleRandomSearch}
-              business={business}
             />}
         />
         <Route
