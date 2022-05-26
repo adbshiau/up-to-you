@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { Grid, Image, Card } from "semantic-ui-react";
+import { Grid, Container, Header } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchField from "../../components/SearchField/SearchField";
 import SearchItem from "../../components/SearchItem/SearchItem";
@@ -31,40 +31,40 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
     if (result) {
         return (
             <>
-              <Grid>
+            <Container>
+                <PageHeader user={user} handleLogout={handleLogout} />
+            </Container>
+
+            <Grid style={{ marginTop: "7em" }}>
                 <Grid.Row>
-                  <Grid.Column>
-                    <PageHeader user={user} handleLogout={handleLogout} />
-                  </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
-                    <h1>Random Page</h1>
+                    <Grid.Column textAlign="center">
+                        <Header as='h1'>Can't pick a place? Let the app decide!</Header>
+                        <SearchField handleSearch={handleRandomSearch}/>
                     </Grid.Column>
                 </Grid.Row>
-              </Grid>
-              <h1>Random Page</h1>
-              <SearchField handleSearch={handleRandomSearch}/>
-                <SearchItem result={result} showProfile={showProfile}/>
+                <Grid.Row>
+                    <Grid.Column textAlign="center">
+                        <SearchItem result={result} showProfile={showProfile} />
+                    </Grid.Column>
+                 </Grid.Row>
+            </Grid>
             </>
         )
     }     
     return (
     <>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
+       <Container>
             <PageHeader user={user} handleLogout={handleLogout} />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-            <Grid.Column>
-            <h1>Random Page</h1>
-            </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      <h1>Random Page</h1>
-      <SearchField handleSearch={handleRandomSearch}/>
+        </Container>
+
+        <Grid style={{ marginTop: "7em" }}>
+                <Grid.Row>
+                    <Grid.Column textAlign="center">
+                        <Header as='h1'>Can't pick a place? Let the app decide!</Header>
+                        <SearchField handleSearch={handleRandomSearch}/>
+                    </Grid.Column>
+                </Grid.Row>
+        </Grid>
     </>
   );
 }
