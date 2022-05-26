@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
-import { Grid } from 'semantic-ui-react'
-import PageHeader from '../../components/PageHeader/PageHeader';
-import Loader from '../../components/Loader/Loader';
-import SearchField from '../../components/SearchField/SearchField';
-import SearchResults from '../../components/SearchResults/SearchResults';
-import yelpService from '../../utils/yelpService';
+import React, { useState } from "react";
+import { Container, Grid } from "semantic-ui-react";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import Loader from "../../components/Loader/Loader";
+import SearchField from "../../components/SearchField/SearchField";
+import SearchResults from "../../components/SearchResults/SearchResults";
+import yelpService from "../../utils/yelpService";
 
-
-export default function SearchPage({user, handleLogout, handleClick, showProfile }) {
-
+export default function SearchPage({
+  user,
+  handleLogout,
+  handleClick,
+  showProfile,
+}) {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -29,25 +32,25 @@ export default function SearchPage({user, handleLogout, handleClick, showProfile
   }
 
   return (
-        <>
-      <Grid>
+    <>
+      <Container>
+        <PageHeader user={user} handleLogout={handleLogout} />
+      </Container>
+
+      <Grid style={{ marginTop: "7em" }}>
         <Grid.Row>
           <Grid.Column>
-            <PageHeader user={user} handleLogout={handleLogout} />
+            <SearchField handleSearch={handleSearch} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-            <Grid.Column>
-            <h1>Home Page</h1>
-            </Grid.Column>
+          <Grid.Column>
+            {!searchResults.length ? ("") : (
+              <SearchResults results={searchResults} showProfile={showProfile} />
+            )}
+          </Grid.Column>
         </Grid.Row>
       </Grid>
-
-      <h1>Search Page</h1>
-      
-      <SearchField handleSearch={handleSearch} />
-      
-      <SearchResults results={searchResults} showProfile={showProfile}/>
     </>
-  )
+  );
 }
