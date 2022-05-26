@@ -4,7 +4,7 @@ const businessesCtrl = require("../../controllers/businesses");
 
 /*---------- Public Routes ----------*/
 router.post("/", businessesCtrl.create);
-router.get("/", businessesCtrl.index);
+router.get("/all", businessesCtrl.allBusinesses);
 router.delete("/:id", businessesCtrl.delete);
 router.get("/:id", businessesCtrl.show);
 

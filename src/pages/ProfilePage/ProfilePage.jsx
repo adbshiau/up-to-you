@@ -1,28 +1,45 @@
-import React from "react";
-import { Grid, Header, Image } from "semantic-ui-react";
+import React, { useEffect } from "react";
+import { Grid, Header, Image, Container, Segment } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
+import * as businessAPI from "../../utils/businessApi";
 
 export default function ProfilePage({ user, handleLogout }) {
+
+  async function allFavorites() {
+    const data = await businessAPI.get(user._id)
+    console.log(data, 'users favorites')
+
+  }
+
+  useEffect(() => {
+    allFavorites()
+  }, [])
+
   return (
-    <>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
-            <PageHeader user={user} handleLogout={handleLogout} />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-            <Grid.Column>
-            <Header as='h1' style={{paddingTop: '50px'}}>
-              <Image circular src={user.photoUrl} />
-              {user.username}
-            </Header>
-            {user.location}
-            {user.bio}
+    <div>
+      <Container>
+        <PageHeader user={user} handleLogout={handleLogout} />
+      </Container>
+      <Container text style={{ marginTop: '7em'}}>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={5}>
+              <Image src={user.photoUrl} wrapped={false} />
             </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      <h1>Profile Page</h1>
-    </>
+            <Grid.Column width={11} style={{ paddingLeft: 0 }}>
+              <Header as='h1' style={{ paddingTop: '120px', marginBottom: 0}}>{user.username}</Header>
+              <Header as='h5' style={{ marginTop: 0, color: 'gray'}}>{user.location}</Header>
+              <p style={{ marginTop: 0}}>{user.bio}</p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        
+        <Header>Favorites</Header>
+        <Segment>
+          
+        </Segment>
+        
+      </Container>
+      </div>
   );
 }

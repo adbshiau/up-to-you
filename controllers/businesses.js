@@ -6,7 +6,7 @@ const s3 = new S3();
 
 module.exports = {
   create,
-  index,
+  allBusinesses,
   delete: deleteBusiness,
   show,
 };
@@ -36,7 +36,7 @@ async function create(req, res) {
   }
 }
 
-async function index(req, res) {
+async function allBusinesses(req, res) {
   console.log("index controller");
   try {
     const businesses = await Business.find({}).populate("userFavorited").exec();

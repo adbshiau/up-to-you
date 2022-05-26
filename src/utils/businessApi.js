@@ -18,7 +18,7 @@ export function create(business) {
 }
 
 export function getAll() {
-    return fetch(BASE_URL, {
+    return fetch(BASE_URL + '/all', {
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
@@ -50,4 +50,8 @@ export function show(businessId) {
         if(res.ok) return res.json();
         throw new Error('Check businessAPI.')
     })
+}
+
+export function get(userId) {
+    return fetch(`${BASE_URL}`)
 }
