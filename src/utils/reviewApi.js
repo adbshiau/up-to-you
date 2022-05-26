@@ -27,13 +27,13 @@ export function deleteReview(reviewId) {
     })
 }
 
-export function index() {
-    return fetch(`${BASE_URL}/reviews`, {
-        headers: {
-            'Authorization': 'Bearer ' + tokenService.getToken()
-        }
-    }).then(res => {
-        if(res.ok) return res.json();
-        throw new Error('Index function in the REVIEW API.')
-    })
-}
+// export function index() {
+//     return fetch(`${BASE_URL}/reviews`, {
+//         headers: {
+//             'Authorization': 'Bearer ' + tokenService.getToken()
+//         }
+//     }).then(res => {
+//         if(res.ok) return res.json();
+//         throw new Error('Index function in the REVIEW API.')
+//     })
+// }

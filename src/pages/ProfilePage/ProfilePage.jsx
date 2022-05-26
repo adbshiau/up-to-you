@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Header, Image, Container, Segment } from "semantic-ui-react";
+import { Grid, Header, Image, Container, Segment, Icon } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from "../../components/Loader/Loader";
@@ -26,13 +26,13 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
     }
   }
 
-  async function allReviews() {
-    const data = await reviewAPI.index(user._id);
-    console.log(data, 'all reviews')
-  }
+  // async function allReviews() {
+  //   const data = await reviewAPI.index(user._id);
+  //   console.log(data, 'all reviews')
+  // }
 
   useEffect(() => {
-    allReviews();
+    // allReviews();
     allFavorites();
   }, []);
 
@@ -59,7 +59,7 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
           </Grid.Row>
         </Grid>
 
-        <Header>Favorites</Header>
+        <Header><Icon name='heart outline' />Favorites</Header>
         <Segment>
           {businesses?.map((item, key) => {
             return (
@@ -72,7 +72,7 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
           })}
         </Segment>
 
-        <Header>Reviews</Header>
+        <Header><Icon name='comment outline' />Reviews</Header>
         <Segment>
           
         </Segment>
