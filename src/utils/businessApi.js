@@ -3,7 +3,6 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/businesses';
 
 export function create(business) {
-    console.log('create function')
     console.log(business, 'business model')
     return fetch(BASE_URL, {
         method: 'POST',
@@ -51,5 +50,4 @@ export function show(businessId) {
         if(res.ok) return res.json();
         throw new Error('Check businessAPI.')
     })
-
 }

@@ -22,8 +22,6 @@ export default function BusinessPage({ user, handleLogout, business, showProfile
     setLoading(true);
     const data = await reviewAPI.create(review, business._id);
     await setReviews(data.reviews)
-    console.log(reviews, 'business page')
-    
     showProfile(business._id);
     setLoading(false);
   }
