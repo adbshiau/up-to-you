@@ -52,6 +52,13 @@ export function show(businessId) {
     })
 }
 
-export function get(userId) {
-    return fetch(`${BASE_URL}`)
+export function get() {
+    return fetch(`${BASE_URL}`, {
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('get function in business controller')
+    })
 }

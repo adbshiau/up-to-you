@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Business = require("../models/business");
 const S3 = require("aws-sdk/clients/s3");
 const { v4: uuidv4 } = require("uuid");
+const { findById } = require("../models/user");
 const s3 = new S3();
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
   allBusinesses,
   delete: deleteBusiness,
   show,
+  index
 };
 
 async function create(req, res) {
@@ -65,5 +67,14 @@ async function show(req, res) {
         res.status(200).json(business);
     } catch (err) {
         console.log(err, "err from show function");
+    }
+}
+
+async function index(req, res) {
+    try {
+        const businesses = await Business.find({'userFavorited': req.user._id});
+        res.status(200).json({ businesses });
+    } catch (err) {
+        console.log(err, "err from index function")
     }
 }

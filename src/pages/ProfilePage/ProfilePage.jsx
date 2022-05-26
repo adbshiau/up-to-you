@@ -6,7 +6,7 @@ import * as businessAPI from "../../utils/businessApi";
 export default function ProfilePage({ user, handleLogout }) {
 
   async function allFavorites() {
-    const data = await businessAPI.get(user._id)
+    const data = await businessAPI.get()
     console.log(data, 'users favorites')
 
   }

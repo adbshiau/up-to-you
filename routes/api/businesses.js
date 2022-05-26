@@ -7,6 +7,7 @@ router.post("/", businessesCtrl.create);
 router.get("/all", businessesCtrl.allBusinesses);
 router.delete("/:id", businessesCtrl.delete);
 router.get("/:id", businessesCtrl.show);
+router.get("/", businessesCtrl.index);
 
 
 /*---------- Protected Routes ----------*/
