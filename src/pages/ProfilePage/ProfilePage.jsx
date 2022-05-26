@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from "../../components/Loader/Loader";
 import * as businessAPI from "../../utils/businessApi";
+import * as reviewAPI from "../../utils/reviewApi";
 
 export default function ProfilePage({ user, handleLogout, showProfile }) {
   const [businesses, setBusinesses] = useState();
@@ -11,7 +12,6 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
 
   async function allFavorites() {
     const data = await businessAPI.get();
-    console.log(data, "allFavorites");
     await setBusinesses(data);
   }
 
@@ -26,7 +26,13 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
     }
   }
 
+  async function allReviews() {
+    const data = await reviewAPI.index(user._id);
+    console.log(data, 'all reviews')
+  }
+
   useEffect(() => {
+    allReviews();
     allFavorites();
   }, []);
 
@@ -64,6 +70,11 @@ export default function ProfilePage({ user, handleLogout, showProfile }) {
               />
             );
           })}
+        </Segment>
+
+        <Header>Reviews</Header>
+        <Segment>
+          
         </Segment>
       </Container>
     </div>

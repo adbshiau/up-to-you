@@ -11,18 +11,30 @@ export function create(review, businessId) {
         }
     }).then(res => {
         if(res.ok) return res.json();
-        throw new Error('REVIEWS API ERROR');
+        throw new Error('Create function in the REVIEW API.');
     })
 }
 
 export function deleteReview(reviewId) {
-    return fetch(`${BASE_URL}/comments/${reviewId}`, {
+    return fetch(`${BASE_URL}/reviews/${reviewId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
     }).then(res => {
         if(res.ok) return res.json()
-        throw new Error('Check express terminal!')
+        throw new Error('Delete review function in the REVIEW API.')
+    })
+}
+
+export function index(userId) {
+    console.log(userId)
+    return fetch(`${BASE_URL}/reviews/${userId}`, {
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Index function in the REVIEW API.')
     })
 }

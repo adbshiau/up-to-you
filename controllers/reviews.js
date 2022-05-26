@@ -8,6 +8,7 @@ const s3 = new S3();
 module.exports = {
     create,
     delete: deleteReview,
+    index,
     
 };
 
@@ -47,5 +48,15 @@ async function deleteReview(req, res) {
         res.json({business: business})
     } catch (err) {
         res.status(400).json({err})
+    }
+}
+
+async function index(req, res) {
+    console.log(req.user._id, 'index function')
+    try {
+        const reviews = await Business.reviews.find({'userId': req.user._id}).exec()
+        res.status(200).json(reviews);
+    } catch (err) {
+        console.log(err, "err from index function");
     }
 }
