@@ -7,7 +7,7 @@ import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from '../../components/Loader/Loader';
 import yelpService from "../../utils/yelpService";
 
-export default function RandomPage({ user, handleLogout }) {
+export default function RandomPage({ user, handleLogout, showProfile }) {
 
     const [result, setResult] = useState();
     const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ export default function RandomPage({ user, handleLogout }) {
               </Grid>
               <h1>Random Page</h1>
               <SearchField handleSearch={handleRandomSearch}/>
-                <SearchItem result={result}/>
+                <SearchItem result={result} showProfile={showProfile}/>
             </>
         )
     }     

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -16,6 +16,10 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
+  const [business, setBusiness] = useState();
+  
+  const navigate = useNavigate();
+
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
   }
@@ -27,18 +31,9 @@ function App() {
 
   async function showProfile(businessId) {
     const data = await businessAPI.show(businessId)
+    setBusiness(data);
+    navigate(`/businesses/${businessId}`)
   }
-
-  // async function handleSearch(data) {
-  //   const results = await yelpService.search(data);
-  //   setSearchResults(results.businesses);
-  // }
-
-  // async function handleRandomSearch(data) {
-  //   const result = await yelpService.randomSearch(data);
-  //   console.log(result, 'handleRandomSearch')
-  //   setBusiness(result);
-  // }
 
   if (user) {
     return (
@@ -50,6 +45,7 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               showProfile={showProfile}
+              
             />
           }
         />
@@ -59,6 +55,7 @@ function App() {
             <SearchPage
               user={user}
               handleLogout={handleLogout}
+              showProfile={showProfile}
             />
           }
         />
@@ -80,6 +77,7 @@ function App() {
             <RandomPage
               user={user}
               handleLogout={handleLogout}
+              showProfile={showProfile}
             />}
         />
         <Route
@@ -87,7 +85,9 @@ function App() {
           element={
           <BusinessPage 
           user={user} 
-          handleLogout={handleLogout} 
+          handleLogout={handleLogout}
+          business={business}
+          showProfile={showProfile}
           />}
         />
       </Routes>

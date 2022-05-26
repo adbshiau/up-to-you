@@ -8,6 +8,7 @@ import * as businessAPI from "../../utils/businessApi";
 
 export default function HomePage({ user, handleLogout, showProfile }) {
   const [businesses, setBusinesses] = useState([]);
+  const [business, setBusiness] = useState();
   const [loading, setLoading] = useState(false);
 
   async function getBusinesses() {
@@ -50,9 +51,10 @@ export default function HomePage({ user, handleLogout, showProfile }) {
       </Grid>
 
       <h1>Home Page</h1>
-      {businesses.map((item) => {
+      {businesses.map((item, key) => {
         return (
           <SearchItem
+            onClick={() => {}}
             result={item}
             removeBusiness={removeBusiness}
             showProfile={showProfile}

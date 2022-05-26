@@ -15,7 +15,7 @@ async function randomSearch(input) {
   
   let response = await fetch(`${BASE_URL}/random/${input.location}/${input.term}`);
   let data = await response.json();
-  let random = await Math.floor(Math.random() * 20) + 1;
+  let random = await Math.floor(Math.random() * 50) + 1;
   console.log(data.businesses[random], 'random')
   return data.businesses[random];
 }

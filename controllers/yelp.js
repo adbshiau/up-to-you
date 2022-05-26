@@ -39,7 +39,7 @@ function randomSearch(req, res) {
     // console.log(req.params.term, 'term')
     const options = {
       method: "GET",
-      url: `${rootURL}location=${req.params.location}&term=${req.params.term}&limit=20`,
+      url: `${rootURL}location=${req.params.location}&term=${req.params.term}&limit=50`,
       headers: {
         Authorization: "Bearer " + key,
       },

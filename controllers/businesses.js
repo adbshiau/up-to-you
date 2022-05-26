@@ -29,7 +29,7 @@ async function create(req, res) {
     });
     console.log(business, "create function in business controller");
     await business.populate("userFavorited");
-    res.status(201).json({ business: business });
+    res.status(201).json(business);
   } catch (err) {
     console.log(err, "err from business controller");
     res.json({ data: err });
@@ -60,10 +60,9 @@ async function deleteBusiness(req, res) {
 }
 
 async function show(req, res) {
-    // console.log(req.params.id, 'show controller')
     try {
         const business = await Business.findOne({'_id': req.params.id});
-        res.status(200).json({business})
+        res.status(200).json(business);
     } catch (err) {
         console.log(err, "err from show function");
     }

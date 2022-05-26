@@ -7,7 +7,7 @@ import SearchResults from '../../components/SearchResults/SearchResults';
 import yelpService from '../../utils/yelpService';
 
 
-export default function SearchPage({user, handleLogout, handleClick}) {
+export default function SearchPage({user, handleLogout, handleClick, showProfile }) {
 
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ export default function SearchPage({user, handleLogout, handleClick}) {
       
       <SearchField handleSearch={handleSearch} />
       
-      <SearchResults results={searchResults} handleClick={handleClick}/>
+      <SearchResults results={searchResults} showProfile={showProfile}/>
     </>
   )
 }

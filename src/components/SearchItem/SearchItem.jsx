@@ -24,15 +24,11 @@ export default function SearchItem({ result, removeBusiness, showProfile }) {
     };
     try {
       const data = await businessAPI.create(item);
+      showProfile(data._id)
     } catch (err) {
       console.log(err);
       setError(err.message);
     }
-  }
-  
-  function handleShowProfile() {
-    showProfile(result._id);
-    navigate(`/businesses/${result._id}`)
   }
 
   return (
@@ -48,7 +44,8 @@ export default function SearchItem({ result, removeBusiness, showProfile }) {
         <Button icon onClick={() => removeBusiness(result._id)}>
           <Icon name="trash alternate outline" />
         </Button>
-        <Button onClick={handleShowProfile}>
+        <Button onClick={() => 
+            showProfile(result._id)}>
         <Icon name="zoom"/>
         </Button>
       </Card.Content>

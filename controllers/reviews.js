@@ -29,7 +29,7 @@ async function create(req, res) {
             })
             await business.save()
             console.log(business, 'business')
-            res.status(201).json({business: business})
+            res.status(201).json(business)
         })
     } catch (err) {
         console.log(err)
