@@ -1,16 +1,22 @@
 import React from "react";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Button, Icon, Comment } from "semantic-ui-react";
 
-export default function ReviewItem({review, deleteReview}) {
+export default function ReviewItem({ review, deleteReview, user }) {
+  const newDate = new Date(review.createdAt).toLocaleDateString("en-us");
   return (
-    <Card.Content>
-      <Card.Header>{review.username}</Card.Header>
-      <Card.Meta>Rating: {review.stars} out of 5 </Card.Meta>
-      <Card.Description>{review.text}</Card.Description>
-      <Image src={review.photoUrl} wrapped ui={true} size="large" />
-      <Button icon onClick={() => deleteReview(review._id)}>
-        <Icon name="trash alternate outline" />
-      </Button>
-    </Card.Content>
+    <>
+      <Comment.Avatar src={user.photoUrl} />
+      <Comment.Content>
+        <Comment.Author>{review.username}</Comment.Author>
+        <Comment.Metadata style={{ marginLeft: 0 }}>{newDate}</Comment.Metadata>
+        <Comment.Metadata><Icon name='star' color='yellow'/> {review.stars} stars</Comment.Metadata>
+        <Comment.Text>{review.text}</Comment.Text>
+        <Image src={review.photoUrl} wrapped ui={true} />
+        <Button size='tiny' icon onClick={() => deleteReview(review._id)}>Delete</Button>
+      </Comment.Content>
+      
+      
+      
+    </>
   );
 }

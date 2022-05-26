@@ -52,15 +52,16 @@ export default function BusinessPage({
               <p style={{ paddingTop: '10px'}}>{business.location.join(', ')}</p>
               <a href={business.url}>Visit Yelp Page</a>
             </Grid.Column>
-
           </Grid.Row>
 
-          <Grid.Row>
-            <AddReviewForm user={user} handleAddReview={handleAddReview} />
-          </Grid.Row>
-
-          <Grid.Row>
-            <ReviewsSection reviews={reviews} setReviews={setReviews} />
+          <Grid.Row style={{ justifyContent: 'center'}}>
+              <Grid.Column width={8}>
+                <h3>Leave a review!</h3>
+                <AddReviewForm user={user} handleAddReview={handleAddReview} />
+              </Grid.Column>
+              <Grid.Column width={7}>
+                <ReviewsSection reviews={reviews} setReviews={setReviews} user={user} />
+              </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>

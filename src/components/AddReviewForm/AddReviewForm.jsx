@@ -33,9 +33,9 @@ export default function AddReviewForm({handleAddReview}) {
   return (
     <Grid style={{ height: "25vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Segment>
+        
           <Form autoComplete="off" onSubmit={handleSubmit}>
-            <Form.Input
+            <Form.TextArea
               className="form-control"
               name="text"
               value={review.text}
@@ -66,11 +66,11 @@ export default function AddReviewForm({handleAddReview}) {
             header='Success'
             content='Thank you for leaving a review!' 
             />
-            <Button type="submit" className="btn">
+            <Button type="submit" size='tiny' floated='right' style={{ backgroundColor: "#ffe196", color: "black" }}>
               Add Review
             </Button>
           </Form>
-        </Segment>
+        
       </Grid.Column>
     </Grid>
   );
