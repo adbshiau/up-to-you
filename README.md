@@ -60,6 +60,9 @@ Launch the app: https://up-to-you.herokuapp.com/login
 
 * Add more filters to business searches
 * Add a find my location feature
+* Add a recently viewed page
+* Update the business model to have userRecentlyViewed
+
 
 ## Assets Used:
 Dumpling clipart from https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png
