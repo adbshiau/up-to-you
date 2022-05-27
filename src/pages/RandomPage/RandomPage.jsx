@@ -46,7 +46,6 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
                 <Grid.Row>
                     <Grid.Column textAlign="center">
                         <SearchItem result={result} showProfile={showProfile} />
-                        {result.is_closed ? <Label size='small' color='red' style={{ marginTop: '5px'}}>Closed</Label> : <Label size='small' color='green' style={{ marginTop: '5px'}}>Open Now</Label>}
                     </Grid.Column>
                  </Grid.Row>
             </Grid>
