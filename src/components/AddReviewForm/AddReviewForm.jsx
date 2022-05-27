@@ -66,7 +66,7 @@ export default function AddReviewForm({handleAddReview}) {
             header='Success'
             content='Thank you for leaving a review!' 
             />
-            <Button type="submit" size='tiny' floated='right' style={{ backgroundColor: "#ffe196", color: "black" }}>
+            <Button type="submit" size='tiny' floated='left' style={{ backgroundColor: "#ffe196", color: "black" }}>
               Add Review
             </Button>
           </Form>

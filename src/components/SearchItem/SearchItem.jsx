@@ -48,7 +48,7 @@ export default function SearchItem({
           ""
         ) : (
           <Button icon onClick={handleAddBusiness} size='mini'>
-            <Icon name="heart" />
+            <Icon name="remove bookmark" />
           </Button>
         )}
         <Button icon onClick={() => removeBusiness(result._id)} size='mini' style={{ backgroundColor: "#ffe196", color: "black" }}>

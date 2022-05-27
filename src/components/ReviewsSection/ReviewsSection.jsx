@@ -8,7 +8,7 @@ export default function ReviewsSection({ reviews, setReviews, user }) {
   async function deleteReview(reviewId) {
     try {
       const data = await reviewAPI.deleteReview(reviewId);
-      await setReviews(data.reviews);
+      await setReviews(...data.reviews);
     } catch (err) {
       console.log(err, "err from the deleteReview function");
     }
