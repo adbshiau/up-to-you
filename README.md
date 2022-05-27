@@ -1,20 +1,24 @@
-# Up To You
+# :fork_and_knife: Up To You
 
-Tired of feeling the pressure of picking a restaurant? With this app, your troubles will be solved. Just type in a keyword and your location and the app will make the decision for you. There's also a search function if you want a few more options or have an idea of where exactly you want to go.
+Tired of feeling the pressure of picking a restaurant? With this app, your troubles will be solved. Just type in a keyword and location and the app will make the decision for you. There's also a search function if you want a few more options to choose from.
 
 Features:
-- Ability to favorite a restaurant and leave reviews
-- 
+- Search for businesses using a keyword and location
+- Get a random business using a keyword and location
+- Ability to favorite a business to be added to the home page and user's profile page
+- Ability to view a specific business' page
+- Ability to add and delete reviews on favorited businesses
+- JWT-based authentication
 
 Launch the app: https://up-to-you.herokuapp.com/login
 
 ## Wireframe:
 
 ### Login Page:
-![login](https://user-images.githubusercontent.com/63468278/170609240-3f76beeb-3bc2-479e-9a4e-52f4fcab0aca.png)
+![Screen Shot 2022-05-27 at 8 21 36 AM](https://user-images.githubusercontent.com/63468278/170729684-6b7eaaa1-61cc-4c87-ad0c-69a05634365f.png)
 
 ### Sign Up Page:
-![signup](https://user-images.githubusercontent.com/63468278/170609298-232ecc22-6942-431f-908f-6dd3cc6e1127.png)
+![Screen Shot 2022-05-27 at 8 21 49 AM](https://user-images.githubusercontent.com/63468278/170729715-e2d0cdf8-91ed-4d4e-8261-abc0d43cdb7b.png)
 
 ### Home Page:
 ![home](https://user-images.githubusercontent.com/63468278/170609334-5145e2a1-e5ba-49aa-9609-188552842052.png)
@@ -33,26 +37,29 @@ Launch the app: https://up-to-you.herokuapp.com/login
 
 ## Technologies Used:
 
-* MongoDB
+* MongoDB Atlas
 * Express.js
 * React
 * Node.js
 * HTML
 * CSS
 * JavaScript
-* Semantic UI
+* JSON Web Token (JWT)
+* Semantic UI React
 * Yelp Fusion API
 
 ## Getting Started:
 
 ### Planning:
-Trello board: https://trello.com/b/elb4gZ3n/up-to-you
-ERD: https://lucid.app/lucidchart/019f30c8-31de-4b62-b1e0-46355beb284d/edit?beaconFlowId=53240C728E77A727&invitationId=inv_17c6e641-7dea-45b0-8e1d-d98bbdc19dc7&page=0_0#
-Wireframes: https://whimsical.com/capstone-LnbFwCfmB42QgqTVNHF2b6
+- Trello board: https://trello.com/b/elb4gZ3n/up-to-you
+- ERD: 
+![Screen Shot 2022-05-27 at 8 33 00 AM](https://user-images.githubusercontent.com/63468278/170731640-bac2963a-ca2e-4ff5-ae85-591fe48abd76.png)
+- Wireframes: https://whimsical.com/capstone-LnbFwCfmB42QgqTVNHF2b6
 
 ## Future Enhancements:
 
-* Add more filters to business searches.
+* Add more filters to business searches
+* Add a find my location feature
 
 ## Assets Used:
 Dumpling clipart from https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png
