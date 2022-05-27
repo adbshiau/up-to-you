@@ -1,8 +1,10 @@
 # Up To You
 
-Being surrounded and caring for plants boosts our spirits and enhance our environments.
+Tired of feeling the pressure of picking a restaurant? With this app, your troubles will be solved. Just type in a keyword and your location and the app will make the decision for you. There's also a search function if you want a few more options or have an idea of where exactly you want to go.
 
-This plant journal is essentially a log for keeping track of your plants and their care routine. You can also use it to make notes about new and exciting growth, and even add and update an image.
+Features:
+- Ability to favorite a restaurant and leave reviews
+- 
 
 Launch the app: https://up-to-you.herokuapp.com/login
 
@@ -45,6 +47,8 @@ Launch the app: https://up-to-you.herokuapp.com/login
 
 ### Planning:
 Trello board: https://trello.com/b/elb4gZ3n/up-to-you
+ERD: https://lucid.app/lucidchart/019f30c8-31de-4b62-b1e0-46355beb284d/edit?beaconFlowId=53240C728E77A727&invitationId=inv_17c6e641-7dea-45b0-8e1d-d98bbdc19dc7&page=0_0#
+Wireframes: https://whimsical.com/capstone-LnbFwCfmB42QgqTVNHF2b6
 
 ## Future Enhancements:
 
