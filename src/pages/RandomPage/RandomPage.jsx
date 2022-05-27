@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { Grid, Container, Header } from "semantic-ui-react";
+import { Grid, Container, Header, Label } from "semantic-ui-react";
 import './RandomPage.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchField from "../../components/SearchField/SearchField";
@@ -46,6 +46,7 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
                 <Grid.Row>
                     <Grid.Column textAlign="center">
                         <SearchItem result={result} showProfile={showProfile} />
+                        {result.is_closed ? <Label size='small' color='red' style={{ marginTop: '5px'}}>Closed</Label> : <Label size='small' color='green' style={{ marginTop: '5px'}}>Open Now</Label>}
                     </Grid.Column>
                  </Grid.Row>
             </Grid>

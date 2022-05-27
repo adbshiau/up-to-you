@@ -107,12 +107,13 @@ export default function BusinessPage({
                 {business.price}
               </p>
               {business.categories.map((item) => (
-                <Label size="small">{item}</Label>
+                <Label size="small" style={{ marginBottom: '5px'}}>{item}</Label>
               ))}
               <p style={{ paddingTop: "10px" }}>
                 {business.location.join(", ")}
               </p>
-              <a href={business.url}>Visit Yelp Page</a>
+              <a href={business.url} target="_blank" rel="noopener noreferrer"><i class="yelp icon"></i>Visit Yelp Page</a>
+              
             </Grid.Column>
           </Grid.Row>
 
