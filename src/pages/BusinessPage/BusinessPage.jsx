@@ -28,17 +28,15 @@ export default function BusinessPage({
     setLoading(true);
     const data = await reviewAPI.create(review, business._id);
     await setReviews(data.reviews);
-    showProfile(business._id);
     setLoading(false);
   }
 
   async function deleteReview(reviewId) {
     try {
-      
+      setLoading(true)
       const data = await reviewAPI.deleteReview(reviewId);
-      console.log(data, 'delete review')
       await setReviews(data.reviews)
-      
+      setLoading(false);
       
     } catch (err) {
       console.log(err, "err from the deleteReview function");
