@@ -4,7 +4,7 @@ import { Grid, Container, Image, Header, Label, Icon } from "semantic-ui-react";
 import "./BusinessPage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchItem from "../../components/SearchItem/SearchItem";
-import Loader from '../../components/Loader/Loader';
+import Loader from "../../components/Loader/Loader";
 import AddReviewForm from "../../components/AddReviewForm/AddReviewForm";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
 import * as reviewAPI from "../../utils/reviewApi";
@@ -32,38 +32,60 @@ export default function BusinessPage({
     setLoading(false);
   }
 
+  async function deleteReview(reviewId) {
+    try {
+      
+      const data = await reviewAPI.deleteReview(reviewId);
+      console.log(data, 'delete review')
+      await setReviews(data.reviews)
+      
+      
+    } catch (err) {
+      console.log(err, "err from the deleteReview function");
+    }
+  }
+
   useEffect(() => {}, [reviews]);
 
   if (loading) {
     return (
-        <>
+      <>
         <Container>
-            <PageHeader user={user} handleLogout={handleLogout} />
+          <PageHeader user={user} handleLogout={handleLogout} />
         </Container>
 
         <Container id="business-page" style={{ marginTop: "7em" }}>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Image src={business.image_url} size="large" wrapped={false}/>
-            </Grid.Column>
-            <Grid.Column width={7}>
-              <Header id="business-page" as='h1'>{business.name}</Header>
-              <p>{business.rating} <Icon color='yellow' name='star'/> {business.price}</p>
-              {business.categories.map((item) => <Label size='small'>{item}</Label>)}
-              <p style={{ paddingTop: '10px'}}>{business.location.join(', ')}</p>
-              <a href={business.url}>Visit Yelp Page</a>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row style={{ justifyContent: 'center'}}>
-              <Grid.Column>
-              <Loader />
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Image src={business.image_url} size="large" wrapped={false} />
               </Grid.Column>
-          </Grid.Row>
-        </Grid>
+              <Grid.Column width={7}>
+                <Header id="business-page" as="h1">
+                  {business.name}
+                </Header>
+                <p>
+                  {business.rating} <Icon color="yellow" name="star" />{" "}
+                  {business.price}
+                </p>
+                {business.categories.map((item) => (
+                  <Label size="small">{item}</Label>
+                ))}
+                <p style={{ paddingTop: "10px" }}>
+                  {business.location.join(", ")}
+                </p>
+                <a href={business.url}>Visit Yelp Page</a>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row style={{ justifyContent: "center" }}>
+              <Grid.Column>
+                <Loader />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Container>
-        </>
-    )
+      </>
+    );
   }
 
   return (
@@ -76,25 +98,39 @@ export default function BusinessPage({
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
-              <Image src={business.image_url} size="large" wrapped={false}/>
+              <Image src={business.image_url} size="large" wrapped={false} />
             </Grid.Column>
             <Grid.Column width={7}>
-              <Header id="business-page" as='h1'>{business.name}</Header>
-              <p>{business.rating} <Icon color='yellow' name='star'/> {business.price}</p>
-              {business.categories.map((item) => <Label size='small'>{item}</Label>)}
-              <p style={{ paddingTop: '10px'}}>{business.location.join(', ')}</p>
+              <Header id="business-page" as="h1">
+                {business.name}
+              </Header>
+              <p>
+                {business.rating} <Icon color="yellow" name="star" />{" "}
+                {business.price}
+              </p>
+              {business.categories.map((item) => (
+                <Label size="small">{item}</Label>
+              ))}
+              <p style={{ paddingTop: "10px" }}>
+                {business.location.join(", ")}
+              </p>
               <a href={business.url}>Visit Yelp Page</a>
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row style={{ justifyContent: 'center'}}>
-              <Grid.Column width={8}>
-                <h3 id="business-page">Leave a review!</h3>
-                <AddReviewForm user={user} handleAddReview={handleAddReview} />
-              </Grid.Column>
-              <Grid.Column width={7}>
-                <ReviewsSection reviews={reviews} setReviews={setReviews} user={user} />
-              </Grid.Column>
+          <Grid.Row style={{ justifyContent: "center" }}>
+            <Grid.Column width={8}>
+              <h3 id="business-page">Leave a review!</h3>
+              <AddReviewForm user={user} handleAddReview={handleAddReview} />
+            </Grid.Column>
+            <Grid.Column width={7}>
+              <ReviewsSection
+                reviews={reviews}
+                setReviews={setReviews}
+                user={user}
+                deleteReview={deleteReview}
+              />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>

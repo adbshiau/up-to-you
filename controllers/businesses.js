@@ -29,22 +29,20 @@ async function create(req, res) {
       is_closed: req.body.is_closed,
       userFavorited: req.user,
     });
-    console.log(business, "create function in business controller");
     await business.populate("userFavorited");
     res.status(201).json(business);
   } catch (err) {
-    console.log(err, "err from business controller");
+    console.log(err, "err from create business controller");
     res.json({ data: err });
   }
 }
 
 async function allBusinesses(req, res) {
-  console.log("index controller");
   try {
     const businesses = await Business.find({}).populate("userFavorited").exec();
     res.status(200).json({ businesses });
   } catch (err) {
-    console.log(err, "err from index function");
+    console.log(err, "err from index business controller");
   }
 }
 
@@ -57,7 +55,7 @@ async function deleteBusiness(req, res) {
     });
     res.status(200).json({ data });
   } catch (err) {
-    console.log(err, "err from delete function");
+    console.log(err, "err from delete business controller");
   }
 }
 
@@ -66,7 +64,7 @@ async function show(req, res) {
         const business = await Business.findOne({'_id': req.params.id});
         res.status(200).json(business);
     } catch (err) {
-        console.log(err, "err from show function");
+        console.log(err, "err from show business controller");
     }
 }
 
@@ -75,6 +73,6 @@ async function index(req, res) {
         const businesses = await Business.find({'userFavorited': req.user._id});
         res.status(200).json(businesses);
     } catch (err) {
-        console.log(err, "err from index function")
+        console.log(err, "err from index business controller")
     }
 }

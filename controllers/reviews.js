@@ -29,23 +29,20 @@ async function create(req, res) {
                 userId: req.user._id
             })
             await business.save()
-            console.log(business, 'business')
             res.status(201).json(business)
         })
     } catch (err) {
-        console.log(err)
+        console.log(err, 'err from the create reviews controller')
         res.json({review: err})
     }
 }
 
 async function deleteReview(req, res) {
-    console.log(req.user.username, 'delete review function!')
     try {
         const business = await Business.findOne({'reviews._id': req.params.id, 'reviews.userId': req.user._id})
         business.reviews.remove(req.params.id)
-        console.log(business, 'business in delete review function')
         await business.save()
-        res.json({business: business})
+        res.json(business)
     } catch (err) {
         res.status(400).json({err})
     }

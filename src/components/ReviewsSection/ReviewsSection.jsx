@@ -4,15 +4,15 @@ import "./ReviewsSection.css";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import * as reviewAPI from "../../utils/reviewApi";
 
-export default function ReviewsSection({ reviews, setReviews, user }) {
-  async function deleteReview(reviewId) {
-    try {
-      const data = await reviewAPI.deleteReview(reviewId);
-      await setReviews(...data.reviews);
-    } catch (err) {
-      console.log(err, "err from the deleteReview function");
-    }
-  }
+export default function ReviewsSection({ reviews, deleteReview, user }) {
+//   async function deleteReview(reviewId) {
+//     try {
+//       const data = await reviewAPI.deleteReview(reviewId);
+//       await setReviews(...data.reviews);
+//     } catch (err) {
+//       console.log(err, "err from the deleteReview function");
+//     }
+//   }
 
   useEffect(() => {}, [reviews]);
 
