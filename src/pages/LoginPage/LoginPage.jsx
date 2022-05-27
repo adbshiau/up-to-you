@@ -37,8 +37,10 @@ export default function LoginPage({handleSignUpOrLogin}) {
   return (
     <Grid textAlign="center" style={{ height: "100vh", backgroundColor: "#82ace6"  }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 400 }}>
+    <Image centered size='tiny' src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png"/>
+      <Header style={{ fontFamily: 'Balsamiq Sans', color: 'white', fontSize: '40px', marginBottom: 0, marginTop: 0   }}>Up To You</Header>
       <Header as="h2" textAlign="center" style={{ fontFamily: 'Balsamiq Sans', color: 'white' }}>
-        <Image src="https://i.pinimg.com/originals/3e/c7/c4/3ec7c4ce95243e371f7e7469bdc5a518.png" />Log in to your account.
+        Log in to your account.
       </Header>
       <Form autoComplete="off" onSubmit={handleSubmit}>
       <Segment>
