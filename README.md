@@ -15,10 +15,10 @@ Launch the app: https://up-to-you.herokuapp.com/login
 ## Wireframe:
 
 ### Login Page:
-![Screen Shot 2022-05-27 at 8 21 36 AM](https://user-images.githubusercontent.com/63468278/170729684-6b7eaaa1-61cc-4c87-ad0c-69a05634365f.png)
+![Screen Shot 2022-05-27 at 9 19 20 AM](https://user-images.githubusercontent.com/63468278/170739115-cd162b1c-fea3-4c48-9016-f19b5211b173.png)
 
 ### Sign Up Page:
-![Screen Shot 2022-05-27 at 8 21 49 AM](https://user-images.githubusercontent.com/63468278/170729715-e2d0cdf8-91ed-4d4e-8261-abc0d43cdb7b.png)
+![Screen Shot 2022-05-27 at 9 19 09 AM](https://user-images.githubusercontent.com/63468278/170739160-90e28ffe-9f45-4856-8a07-1146682f41db.png)
 
 ### Home Page:
 ![home](https://user-images.githubusercontent.com/63468278/170609334-5145e2a1-e5ba-49aa-9609-188552842052.png)
