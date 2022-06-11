@@ -25,6 +25,9 @@ export default function PageHeader({ user, handleLogout }) {
             <Link to="/search">Search</Link>
           </Menu.Item>
           <Menu.Item>
+            <Link to="/history">History</Link>
+          </Menu.Item>
+          <Menu.Item>
             <Image
               src={
                 user?.photoUrl
