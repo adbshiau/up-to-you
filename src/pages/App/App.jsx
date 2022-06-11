@@ -8,6 +8,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 import RandomPage from "../RandomPage/RandomPage";
 import BusinessPage from "../BusinessPage/BusinessPage";
 import HomePage from "../HomePage/HomePage";
+import HistoryPage from "../HistoryPage/HistoryPage";
 import userService from "../../utils/userService";
 import * as businessAPI from "../../utils/businessApi";
 
@@ -97,6 +98,16 @@ function App() {
               user={user}
               handleLogout={handleLogout}
               business={business}
+              showProfile={showProfile}
+            />
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <HistoryPage
+              user={user}
+              handleLogout={handleLogout}
               showProfile={showProfile}
             />
           }
