@@ -32,7 +32,7 @@ const businessSchema = new mongoose.Schema({
   location: [String],
   phone: Number,
   is_closed: Boolean,
-  userFavorited: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  userViewed: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   favorites: [favoritesSchema], // embedded the favorites schema
   reviews: [reviewsSchema], // embedded the reviews schema
 });

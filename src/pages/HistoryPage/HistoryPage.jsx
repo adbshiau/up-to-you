@@ -14,7 +14,7 @@ export default function HistoryPage({ user, handleLogout }) {
         <Grid.Row>
           <Grid.Column textAlign="left">
             <Header as="h3" id="history-page">
-              Recently viewed:
+              Recently viewed businesses:
             </Header>
           </Grid.Column>
         </Grid.Row>

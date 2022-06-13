@@ -27,9 +27,9 @@ async function create(req, res) {
       location: req.body.location,
       phone: req.body.phone,
       is_closed: req.body.is_closed,
-      userFavorited: req.user,
+      userViewed: req.user,
     });
-    await business.populate("userFavorited");
+    await business.populate("userViewed");
     res.status(201).json(business);
   } catch (err) {
     console.log(err, "err from create business controller");
@@ -39,7 +39,7 @@ async function create(req, res) {
 
 async function allBusinesses(req, res) {
   try {
-    const businesses = await Business.find({}).populate("userFavorited").exec();
+    const businesses = await Business.find({}).populate("userViewed").exec();
     res.status(200).json({ businesses });
   } catch (err) {
     console.log(err, "err from index business controller");
@@ -51,7 +51,7 @@ async function deleteBusiness(req, res) {
   try {
     const data = await Business.findOneAndDelete({
       _id: req.params.id,
-      userFavorited: req.user._id,
+      userViewed: req.user._id,
     });
     res.status(200).json({ data });
   } catch (err) {
@@ -70,7 +70,7 @@ async function show(req, res) {
 
 async function index(req, res) {
     try {
-        const businesses = await Business.find({'userFavorited': req.user._id});
+        const businesses = await Business.find({'userViewed': req.user._id});
         res.status(200).json(businesses);
     } catch (err) {
         console.log(err, "err from index business controller")
