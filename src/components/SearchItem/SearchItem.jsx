@@ -13,7 +13,7 @@ export default function SearchItem({
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  async function handleAddBusiness() {
+  async function handleAddToHistory() {
     const categories = [];
     result.categories.forEach((element) => categories.push(element.title));
     const item = {
@@ -47,7 +47,7 @@ export default function SearchItem({
         {onHome ? (
           ""
         ) : (
-          <Button icon onClick={handleAddBusiness} size='mini'>
+          <Button icon onClick={handleAddToHistory} size='mini'>
             <Icon name="remove bookmark" />
           </Button>
         )}
