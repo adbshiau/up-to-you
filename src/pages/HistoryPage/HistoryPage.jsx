@@ -1,15 +1,24 @@
-import React from 'react';
-import { Container } from 'semantic-ui-react';
+import React from "react";
+import { Container, Grid, Header } from "semantic-ui-react";
+import "./HistoryPage.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 
-export default function HistoryPage({user, handleLogout}) {
-    return (
-        <>
-          <Container>
-            <PageHeader user={user} handleLogout={handleLogout} />
-          </Container>
-    
-          <h1>Hello?</h1>
-        </>
-      );
+export default function HistoryPage({ user, handleLogout }) {
+  return (
+    <>
+      <Container>
+        <PageHeader user={user} handleLogout={handleLogout} />
+      </Container>
+
+      <Grid>
+        <Grid.Row>
+          <Grid.Column textAlign="left">
+            <Header as="h3" id="history-page">
+              Recently viewed:
+            </Header>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </>
+  );
 }
