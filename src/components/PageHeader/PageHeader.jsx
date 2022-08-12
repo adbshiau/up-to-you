@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, Icon, Menu, Container, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./PageHeader.css";
 
 export default function PageHeader({ user, handleLogout }) {
+
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+
   const style = {
     backgroundColor: "#82ace6",
     color: "white",
@@ -11,8 +15,10 @@ export default function PageHeader({ user, handleLogout }) {
   };
 
   return (
-    <Menu fixed="top" inverted borderless style={style} className="nav-menu">
-      <Container>
+      <Menu fixed="top" inverted borderless style={style} className={click ? 'active' : ''}>
+        <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        </div>
         <Menu.Item as="a" header>
           <Image
             size="mini"
@@ -21,6 +27,7 @@ export default function PageHeader({ user, handleLogout }) {
           />
           <Link to="/home">Up To You</Link>
         </Menu.Item>
+        <Menu.Menu className={click ? 'active' : ''}>
         <Menu.Item>
           <Link to="/random">Random</Link>
         </Menu.Item>
@@ -39,7 +46,6 @@ export default function PageHeader({ user, handleLogout }) {
             }
             avatar
           ></Image>
-        </Menu.Item>
         <Dropdown item simple text={user.username} floating="right">
           <Dropdown.Menu>
             <Dropdown.Item>
@@ -54,7 +60,8 @@ export default function PageHeader({ user, handleLogout }) {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-      </Container>
-    </Menu>
+        </Menu.Item>
+        </Menu.Menu>
+      </Menu>
   );
 }
