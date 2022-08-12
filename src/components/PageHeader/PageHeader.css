@@ -11,8 +11,8 @@
     transition: all 0.2s ease-out;
 }
 
-.ui.menu .header.item {
-    font-size: 1.2rem;
+.ui.menu .item > a {
+    font-size: 1.1rem;
 }
 
 .ui.menu .menu {
@@ -36,7 +36,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-100%, 80%);
+        transform: translate(-100%, 100%);
         font-size: 1.6rem;
         cursor: pointer;
         color: white;
@@ -60,13 +60,14 @@
 
     .ui.menu .menu.active {
         background: #82ace6;
+        margin-right: 0;
         right: 0;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
     }
 
-    .ui.menu .item:hover {
+    .ui.menu .menu.item > a:hover {
         border: 1px solid #fff;
         transition: all 0.2s ease-out;
     }
