@@ -39,9 +39,7 @@ export default function HomePage({ user, handleLogout, showProfile, onHome }) {
 
   return (
     <>
-      <Container>
-        <PageHeader user={user} handleLogout={handleLogout} />
-      </Container>
+      
 
       <Grid container columns={3} doubling stackable id="home" style={{ marginTop: "7em" }}>
         <Grid.Column>

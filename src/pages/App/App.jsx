@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import SearchPage from "../SearchPage/SearchPage";
@@ -9,8 +8,10 @@ import RandomPage from "../RandomPage/RandomPage";
 import BusinessPage from "../BusinessPage/BusinessPage";
 import HomePage from "../HomePage/HomePage";
 import HistoryPage from "../HistoryPage/HistoryPage";
+import PageHeader from "../../components/PageHeader/PageHeader";
 import userService from "../../utils/userService";
 import * as businessAPI from "../../utils/businessApi";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -38,6 +39,8 @@ function App() {
 
   if (user) {
     return (
+      <>
+      <PageHeader user={user} handleLogout={handleLogout} />
       <Routes>
         <Route
           path="/home"
@@ -113,6 +116,7 @@ function App() {
           }
         />
       </Routes>
+      </>
     );
   }
 
