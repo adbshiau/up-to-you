@@ -33,10 +33,6 @@ export default function SearchPage({
 
   return (
     <>
-      <Container>
-        <PageHeader user={user} handleLogout={handleLogout} />
-      </Container>
-
       <Grid style={{ marginTop: "7em" }}>
         <Grid.Row>
           <Grid.Column textAlign="center">

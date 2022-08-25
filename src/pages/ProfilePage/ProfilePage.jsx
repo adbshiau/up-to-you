@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Header, Image, Container, Segment, Icon } from "semantic-ui-react";
-import './ProfilePage.css';
-import PageHeader from "../../components/PageHeader/PageHeader";
+import {
+  Grid,
+  Header,
+  Image,
+  Container,
+  Segment,
+  Icon,
+} from "semantic-ui-react";
+import "./ProfilePage.css";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from "../../components/Loader/Loader";
 import * as businessAPI from "../../utils/businessApi";
 import * as reviewAPI from "../../utils/reviewApi";
 
-export default function ProfilePage({ user, handleLogout, showProfile, onHome }) {
+export default function ProfilePage({
+  user,
+  handleLogout,
+  showProfile,
+  onHome,
+}) {
   const [businesses, setBusinesses] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -38,51 +49,58 @@ export default function ProfilePage({ user, handleLogout, showProfile, onHome })
   }, []);
 
   return (
-    <div>
-      <Container>
-        <PageHeader user={user} handleLogout={handleLogout} />
+    <div className="profile-page">
+      <Container id="profile-bio">
+        <Image id="profile-img" src={user.photoUrl} wrapped={true} />
+        <div className="profile-stats">
+          <div className="stats-reviews">
+            <p id="stats-value">7</p>
+            <p>Reviews</p>
+          </div>
+          <div className="stats-followers">
+            <p id="stats-value">8</p>
+            <p>Followers</p>
+          </div>
+          <div className="stats-following">
+            <p id="stats-value">9</p>
+            <p>Following</p>
+          </div>
+        </div>
       </Container>
-      <Container text style={{ marginTop: "7em" }} id='profile-page'>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Image src={user.photoUrl} wrapped={false} />
-            </Grid.Column>
-            <Grid.Column width={11} style={{ paddingLeft: 0 }}>
-              <Header id='profile-page' as="h1" style={{ paddingTop: "120px", marginBottom: 0 }}>
-                {user.username}
-              </Header>
-              <Header as="h5" style={{ marginTop: 0, color: "gray" }}>
-                {user.location}
-              </Header>
-              <p style={{ marginTop: 0 }}>{user.bio}</p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
 
-        <Header id='profile-page'><Icon name='heart outline' />Favorites</Header>
+      <Container id="profile-about-me">
+        <h3>{user.username}</h3>
+        <p><Icon name="map pin"/>{user.location}</p>
+        <p><Icon name="comment alternate outline"/>{user.bio}</p>
+      </Container>
+
+      <Container>
+        <Header id="profile-page">
+          <Icon name="heart outline" />
+          Favorites
+        </Header>
         <Grid container columns={3} doubling stackable>
-        <Grid.Column>
+          <Grid.Column>
             {businesses?.map((item, key) => {
               return (
                 <Segment>
-                <SearchItem
-                  result={item}
-                  removeBusiness={removeBusiness}
-                  showProfile={showProfile}
-                  onHome={onHome}
-                />
+                  <SearchItem
+                    result={item}
+                    removeBusiness={removeBusiness}
+                    showProfile={showProfile}
+                    onHome={onHome}
+                  />
                 </Segment>
               );
             })}
-        </Grid.Column>
-      </Grid>
+          </Grid.Column>
+        </Grid>
 
-        <Header id='profile-page'><Icon name='comment outline'/>Reviews</Header>
-        
+        <Header id="profile-page">
+          <Icon name="comment outline" />
+          Reviews
+        </Header>
       </Container>
     </div>
   );
 }
-
-

@@ -1,3 +1,51 @@
-#profile-page {
+.profile-page {
     font-family: 'ABeeZee', sans-serif;
+    
+}
+
+#profile-bio {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#profile-img > img {
+    border-radius: 50%;
+    width: 8rem;
+}
+
+.profile-stats {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    text-align: center;
+}
+
+.stats-reviews {
+    margin-right: 10px;
+    
+}
+
+.stats-followers {
+    margin-right: 10px;
+}
+
+#stats-value {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+#profile-about-me {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+#profile-about-me > h3 {
+    margin-bottom: 0;
+}
+
+#profile-about-me > p {
+    margin-bottom: 0;
 }

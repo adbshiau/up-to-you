@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { Grid, Container, Header, Label } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
 import './RandomPage.css';
-import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchField from "../../components/SearchField/SearchField";
 import SearchItem from "../../components/SearchItem/SearchItem";
 import Loader from '../../components/Loader/Loader';
@@ -22,20 +21,13 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
 
     if (loading) {
         return (
-          <>
-            <PageHeader handleLogout={handleLogout} user={user} />
             <Loader />
-          </>
         );
     }
 
     if (result) {
         return (
             <>
-            <Container>
-                <PageHeader user={user} handleLogout={handleLogout} />
-            </Container>
-
             <Grid style={{ marginTop: "7em" }}>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
@@ -54,10 +46,6 @@ export default function RandomPage({ user, handleLogout, showProfile }) {
     }     
     return (
     <>
-       <Container>
-            <PageHeader user={user} handleLogout={handleLogout} />
-        </Container>
-
         <Grid style={{ marginTop: "7em" }}>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
